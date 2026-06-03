@@ -193,7 +193,7 @@ window.PROJECTS = [
 			'Scripting languages are often slow, so I added a “script → C#” translation unit, ' +
 			'letting code run at native speed on rebuild. It includes code completion and error handling, and ' +
 			'drops into Unity as a console or in-game computer screen.',
-		media: { kind: 'image', src: 'https://sebastianostlund.github.io/images/BollLang.png' }
+		media: { kind: 'image', src: 'assets/img/BollLang.png' }
 	},
 	{
 		title: 'Slipstream',
@@ -252,7 +252,7 @@ window.PROJECTS = [
 		description:
 			'Alongside serious work it’s important to test new things, follow your imagination into new ' +
 			'areas — and most importantly, to have fun. P.S. wearing the silly-looking box was not fun!',
-		media: { kind: 'image', src: 'https://sebastianostlund.github.io/images/Fun.png', href: 'https://sebastianostlund.github.io/images/Fun.png' }
+		media: { kind: 'image', src: 'assets/img/AR_Pistol_and_amour.jpg', href: 'assets/img/AR_Pistol_and_amour.jpg' }
 	},
 	{
 		title: 'Product Display — Actiste MR',
@@ -288,7 +288,7 @@ window.PROJECTS = [
 		description:
 			'For UVR Nordic I built a prototype AR platform for city planning, letting architects freely move ' +
 			'houses around and make modifications to their city plan.',
-		media: { kind: 'image', src: 'https://sebastianostlund.github.io/images/UVR.jpg' }
+		media: { kind: 'image', src: 'assets/img/UVR.jpg' }
 	},
 	{
 		title: 'Volvo Cars',
@@ -298,7 +298,7 @@ window.PROJECTS = [
 			'Car paint must resist stone chips, tested by firing stones at a painted plate and guesstimating ' +
 			'the damage. I replaced the guesswork with image recognition that classifies damage size and ' +
 			'produces an objective damage report.',
-		media: { kind: 'image', src: 'https://sebastianostlund.github.io/images/volvo.png', href: 'https://sebastianostlund.github.io/images/volvo.png' }
+		media: { kind: 'image', src: 'assets/img/Volvo.png', href: 'assets/img/Volvo.png' }
 	},
 	{
 		title: 'jDome Tilt',

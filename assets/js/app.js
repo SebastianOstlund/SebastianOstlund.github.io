@@ -9,6 +9,7 @@
 
 	var $ = function (sel, root) { return (root || document).querySelector(sel); };
 	var el = function (tag, cls) { var e = document.createElement(tag); if (cls) e.className = cls; return e; };
+	var FALLBACK_PROJECT_IMAGE = 'assets/Sebastian Portrait.png';
 
 	/* ------------------------------------------------------------------ *
 	 * Media renderers
@@ -142,6 +143,15 @@
 		return path.replace(/\\/g, '/');
 	}
 
+	function bindImageFallback(img) {
+		if (!img) return;
+		img.addEventListener('error', function () {
+			if (img.dataset.fallbackApplied) return;
+			img.dataset.fallbackApplied = '1';
+			img.src = normalizeMediaPath(FALLBACK_PROJECT_IMAGE);
+		});
+	}
+
 	function ensureImageLightbox() {
 		if (imageLightbox) return imageLightbox;
 
@@ -190,6 +200,7 @@
 		var img = el('img');
 		var normalizedSrc = normalizeMediaPath(src);
 		img.src = normalizedSrc;
+		bindImageFallback(img);
 		img.loading = 'lazy';
 		img.alt = '';
 		img.width = 480; img.height = 360;
@@ -359,6 +370,7 @@
 			var media = el('div', 'slide__media');
 			var img = el('img');
 			img.src = 'assets/img/' + encodeURIComponent(s.file);
+			bindImageFallback(img);
 			img.alt = s.title;
 			img.loading = i === 0 ? 'eager' : 'lazy';
 			media.appendChild(img);
