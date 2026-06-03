@@ -9,7 +9,7 @@
 
 	var $ = function (sel, root) { return (root || document).querySelector(sel); };
 	var el = function (tag, cls) { var e = document.createElement(tag); if (cls) e.className = cls; return e; };
-	var FALLBACK_PROJECT_IMAGE = 'assets/Sebastian Portrait.png';
+	var FALLBACK_PROJECT_IMAGE = 'assets/img/Sebastian Portrait.png';
 
 	/* ------------------------------------------------------------------ *
 	 * Media renderers
@@ -237,8 +237,8 @@
 	 * ------------------------------------------------------------------ */
 
 	var STORE_BADGE = {
-		play: 'https://sebastianostlund.github.io/images/Icon-Google-Play-Store.png',
-		app: 'https://sebastianostlund.github.io/images/Icon-App-Store.png'
+		play: 'assets/img/misc/Icon-Google-Play-Store.png',
+		app: 'assets/img/misc/Icon-App-Store.png'
 	};
 	var STORE_LABEL = { play: 'Get it on Google Play', app: 'Download on the App Store' };
 
@@ -369,7 +369,7 @@
 
 			var media = el('div', 'slide__media');
 			var img = el('img');
-			img.src = 'assets/img/' + encodeURIComponent(s.file);
+			img.src = 'assets/img/projects/' + encodeURIComponent(s.file);
 			bindImageFallback(img);
 			img.alt = s.title;
 			img.loading = i === 0 ? 'eager' : 'lazy';
@@ -565,7 +565,6 @@
 		renderSkills();
 		setupNav();
 		setupReveal();
-		var yr = $('#year'); if (yr) yr.textContent = String(new Date().getFullYear());
 	}
 
 	if (document.readyState === 'loading') {

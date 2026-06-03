@@ -26,86 +26,86 @@ window.PROJECTS = [
 	/* --- Highlights also listed as project cards (to compare against the slideshow) --- */
 	{
 		title: 'Sundsvall–Timrå Airport',
-		role: 'CTO',
+		role: 'CTO, Lead Developer',
 		tags: ['Training', 'VR'],
 		description:
 			'I led the development of an immersive training experience for Sundsvall–Timrå Airport, ' +
 			'covering aircraft marshalling and fire-extinguishing procedures in a safe, repeatable virtual environment.',
-		media: { kind: 'image', src: 'assets/img/SundsvalTimraAirport.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/SundsvalTimraAirport.jpg' }
 	},
 	{
-		title: 'SJ Tidsresan',
+		title: 'SJ Time Journey',
 		role: 'CTO, Lead Developer',
-		tags: ['Interactive Experience', 'Rail', 'Visualization'],
+		tags: ['Interactive Experience', 'Train', 'History'],
 		description:
 			'I led the architecture and development of an interactive timeline experience for SJ, guiding users ' +
 			'through the history of trains in Sweden with a clear narrative, polished visuals, and robust technical execution.',
-		media: { kind: 'image', src: 'assets/img/SJTidsresan.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/SJTidsresan.jpg' }
 	},
 	{
 		title: 'FujiFilm',
-		role: 'Lead Developer',
+		role: 'CTO, Lead Developer',
 		tags: ['Unity', 'AR'],
 		description:
-			'I extended FujiFilm’s application, adding new machines and richer interactions to create a more ' +
-			'engaging, true-to-life product experience.',
-		media: { kind: 'image', src: 'assets/img/FujiFilm.jpg' }
+			'I led the continued development of FujiFilm’s application by delivering new features, resolving legacy issues, ' +
+			'and improving overall stability, usability, and product quality.',
+		media: { kind: 'image', src: 'assets/img/projects/FujiFilm.jpg' }
 	},
 	{
 		title: 'AlixLabs',
-		role: 'CTO',
+		role: 'CTO, Lead Developer',
 		tags: ['Guided Tour', 'Unity'],
 		description:
 			'I led the creation of an immersive guided tour through the semiconductor process, visualising how ' +
 			'microchips are manufactured step by step.',
-		note: '*Full scene can’t be shown due to NDA.',
-		media: { kind: 'image', src: 'assets/img/AlixLabs.jpg' }
+		note: '*Environment and specific details cannot be shown due to NDA.',
+		media: { kind: 'image', src: 'assets/img/projects/AlixLabs.jpg' }
 	},
 	{
 		title: 'Atlant3D',
-		role: 'CTO',
+		role: 'CTO, Lead Developer',
 		tags: ['Guided Tour', 'Unity'],
 		description:
 			'I directed an interactive guided tour of Atlant3D’s atomic-scale manufacturing, walking viewers ' +
 			'through the complete microchip printing process.',
-		note: '*Full scene can’t be shown due to NDA.',
-		media: { kind: 'image', src: 'assets/img/Atlant3D.jpg' }
+		note: '*Environment and specific details cannot be shown due to NDA.',
+		media: { kind: 'image', src: 'assets/img/projects/Atlant3D.jpg' }
 	},
 	{
 		title: 'Wind Turbine Repair',
-		role: 'CTO',
+		role: 'CTO, Lead Developer',
 		tags: ['Guided Tour', 'VR'],
 		description:
 			'I developed an immersive guided tour demonstrating the step-by-step repair of a damaged wind ' +
 			'turbine, turning a complex maintenance procedure into a clear visual walkthrough.',
-		media: { kind: 'image', src: 'assets/img/Wind Turbine Repair.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/Wind Turbine Repair.jpg' }
 	},
 	{
 		title: 'Volvo Stone Crusher',
-		role: 'CTO',
+		role: 'CTO, Lead Developer',
 		tags: ['Volvo', 'Interactive'],
 		description:
 			'I built an interactive demonstration of Volvo’s new electric stone crusher and its eco mode, ' +
 			'controlled through a virtual iPad that drives the machine in real time.',
-		media: { kind: 'image', src: 'assets/img/Volvo Stonecrusher.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/Volvo Stonecrusher.jpg' }
 	},
 	{
 		title: 'TactoTek',
-		role: 'CTO',
+		role: 'CTO, Lead Developer',
 		tags: ['Automotive', 'AR'],
 		description:
 			'I created an experience showcasing TactoTek’s smart surfaces inside a vehicle interior, ' +
 			'highlighting their seamless, touch-sensitive technology.',
-		media: { kind: 'image', src: 'assets/img/TactoTek.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/TactoTek.jpg' }
 	},
 	{
 		title: 'Car Showroom',
-		role: 'CTO',
+		role: 'CTO, Lead Developer',
 		tags: ['Mixed Reality', 'Automotive'],
 		description:
 			'I designed a compact Mixed Reality platform for showcasing vehicles, letting customers explore ' +
 			'cars virtually at full scale.',
-		media: { kind: 'image', src: 'assets/img/Car Showroom.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/Car Showroom.jpg' }
 	},
 	{
 		title: 'PC Emulator',
@@ -114,7 +114,7 @@ window.PROJECTS = [
 		description:
 			'I implemented a complete virtual 500 MHz computer inside Unity, fully programmable in C/C++ and ' +
 			'emulating a working machine in real time.',
-		media: { kind: 'image', src: 'assets/img/PC Emulator.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/PC Emulator.jpg' }
 	},
 	{
 		title: 'RISC-V Emulator',
@@ -123,7 +123,7 @@ window.PROJECTS = [
 		description:
 			'I built a full RISC-V microprocessor emulator, faithfully reproducing the architecture’s ' +
 			'instruction set and execution pipeline.',
-		media: { kind: 'image', src: 'assets/img/RISCV Emulator.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/RISCV Emulator.jpg' }
 	},
 
 	{
@@ -193,7 +193,7 @@ window.PROJECTS = [
 			'Scripting languages are often slow, so I added a “script → C#” translation unit, ' +
 			'letting code run at native speed on rebuild. It includes code completion and error handling, and ' +
 			'drops into Unity as a console or in-game computer screen.',
-		media: { kind: 'image', src: 'assets/img/BollLang.png' }
+		media: { kind: 'image', src: 'assets/img/projects/BollLang.png' }
 	},
 	{
 		title: 'Slipstream',
@@ -252,7 +252,7 @@ window.PROJECTS = [
 		description:
 			'Alongside serious work it’s important to test new things, follow your imagination into new ' +
 			'areas — and most importantly, to have fun. P.S. wearing the silly-looking box was not fun!',
-		media: { kind: 'image', src: 'assets/img/AR_Pistol_and_amour.jpg', href: 'assets/img/AR_Pistol_and_amour.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/AR_Pistol_and_amour.jpg', href: 'assets/img/projects/AR_Pistol_and_amour.jpg' }
 	},
 	{
 		title: 'Product Display — Actiste MR',
@@ -288,7 +288,7 @@ window.PROJECTS = [
 		description:
 			'For UVR Nordic I built a prototype AR platform for city planning, letting architects freely move ' +
 			'houses around and make modifications to their city plan.',
-		media: { kind: 'image', src: 'assets/img/UVR.jpg' }
+		media: { kind: 'image', src: 'assets/img/projects/UVR.jpg' }
 	},
 	{
 		title: 'Volvo Cars',
@@ -298,7 +298,7 @@ window.PROJECTS = [
 			'Car paint must resist stone chips, tested by firing stones at a painted plate and guesstimating ' +
 			'the damage. I replaced the guesswork with image recognition that classifies damage size and ' +
 			'produces an objective damage report.',
-		media: { kind: 'image', src: 'assets/img/Volvo.png', href: 'assets/img/Volvo.png' }
+		media: { kind: 'image', src: 'assets/img/projects/volvo.png', href: 'assets/img/projects/volvo.png' }
 	},
 	{
 		title: 'jDome Tilt',
@@ -332,59 +332,59 @@ window.PROJECTS = [
 ];
 
 /*
- * Slideshow highlights. One slide per image in assets/img/.
+ * Slideshow highlights. One slide per image in assets/img/projects/.
  * Each slide: image on one side, { title, text, tags } on the other.
  */
 window.SLIDES = [
 	{
 		file: 'SundsvalTimraAirport.jpg',
 		title: 'Sundsvall–Timrå Airport',
-		text: 'As CTO I led the development of an immersive training experience for Sundsvall–Timrå Airport, covering aircraft marshalling and fire-extinguishing procedures in a safe, repeatable virtual environment.',
-		tags: ['CTO', 'Training', 'VR']
+		text: 'As CTO and Lead Developer I led the development of an immersive training experience for Sundsvall–Timrå Airport, covering aircraft marshalling and fire-extinguishing procedures in a safe, repeatable virtual environment.',
+		tags: ['CTO', 'Lead Developer', 'Training', 'VR']
 	},
 	{
 		file: 'FujiFilm.jpg',
 		title: 'FujiFilm',
-		text: 'As Lead Developer I extended FujiFilm’s application, adding new machines and richer interactions to create a more engaging, true-to-life product experience.',
-		tags: ['Lead Developer', 'Unity', 'AR']
+		text: 'As CTO and Lead Developer I led the continued development of FujiFilm’s application by delivering new features, resolving legacy issues, and improving overall stability, usability, and product quality.',
+		tags: ['CTO', 'Lead Developer', 'Unity', 'AR']
 	},
 	{
 		file: 'AlixLabs.jpg',
 		title: 'AlixLabs',
-		text: 'As CTO I led the creation of an immersive guided tour through the semiconductor process, visualising how microchips are manufactured step by step.',
-		tags: ['CTO', 'Guided Tour', 'Unity'],
-		note: '*Full scene can’t be shown due to NDA.'
+		text: 'As CTO and Lead Developer I led the creation of an immersive guided tour through the semiconductor process, visualising how microchips are manufactured step by step.',
+		tags: ['CTO', 'Lead Developer', 'Guided Tour', 'Unity'],
+		note: '*Environment and specific details cannot be shown due to NDA.'
 	},
 	{
 		file: 'Atlant3D.jpg',
 		title: 'Atlant3D',
-		text: 'As CTO I directed an interactive guided tour of Atlant3D’s atomic-scale manufacturing, walking viewers through the complete microchip printing process.',
-		tags: ['CTO', 'Guided Tour', 'Unity'],
-		note: '*Full scene can’t be shown due to NDA.'
+		text: 'As CTO and Lead Developer I directed an interactive guided tour of Atlant3D’s atomic-scale manufacturing, walking viewers through the complete microchip printing process.',
+		tags: ['CTO', 'Lead Developer', 'Guided Tour', 'Unity'],
+		note: '*Environment and specific details cannot be shown due to NDA.'
 	},
 	{
 		file: 'Wind Turbine Repair.jpg',
 		title: 'Wind Turbine Repair',
-		text: 'As CTO I developed an immersive guided tour demonstrating the step-by-step repair of a damaged wind turbine, turning a complex maintenance procedure into a clear visual walkthrough.',
-		tags: ['CTO', 'Guided Tour', 'VR']
+		text: 'As CTO and Lead Developer I developed an immersive guided tour demonstrating the step-by-step repair of a damaged wind turbine, turning a complex maintenance procedure into a clear visual walkthrough.',
+		tags: ['CTO', 'Lead Developer', 'Guided Tour', 'VR']
 	},
 	{
 		file: 'Volvo Stonecrusher.jpg',
 		title: 'Volvo Stone Crusher',
-		text: 'As CTO I built an interactive demonstration of Volvo’s new electric stone crusher and its eco mode, controlled through a virtual iPad that drives the machine in real time.',
-		tags: ['CTO', 'Volvo', 'Interactive']
+		text: 'As CTO and Lead Developer I built an interactive demonstration of Volvo’s new electric stone crusher and its eco mode, controlled through a virtual iPad that drives the machine in real time.',
+		tags: ['CTO', 'Lead Developer', 'Volvo', 'Interactive']
 	},
 	{
 		file: 'TactoTek.jpg',
 		title: 'TactoTek',
-		text: 'As CTO I created an experience showcasing TactoTek’s smart surfaces inside a vehicle interior, highlighting their seamless, touch-sensitive technology.',
-		tags: ['CTO', 'Automotive', 'AR']
+		text: 'As CTO and Lead Developer I created an experience showcasing TactoTek’s smart surfaces inside a vehicle interior, highlighting their seamless, touch-sensitive technology.',
+		tags: ['CTO', 'Lead Developer', 'Automotive', 'AR']
 	},
 	{
 		file: 'Car Showroom.jpg',
 		title: 'Car Showroom',
-		text: 'As CTO I designed a compact Mixed Reality platform for showcasing vehicles, letting customers explore cars virtually at full scale.',
-		tags: ['CTO', 'Mixed Reality', 'Automotive']
+		text: 'As CTO and Lead Developer I designed a compact Mixed Reality platform for showcasing vehicles, letting customers explore cars virtually at full scale.',
+		tags: ['CTO', 'Lead Developer', 'Mixed Reality', 'Automotive']
 	},
 	{
 		file: 'PC Emulator.jpg',
@@ -402,10 +402,10 @@ window.SLIDES = [
 
 /* Interests cards */
 window.INTERESTS = [
-	{ icon: 'code', title: 'Personal projects', text: 'I like to program in my free time — a great way to explore areas you wouldn’t otherwise dive into.' },
-	{ icon: 'rocket', title: 'Science', text: 'I watch scientific programmes to follow trends in computer science, mathematics and even microbiology.' },
-	{ icon: 'plane', title: 'Traveling', text: 'I like to travel the world and take part in other cultures.' },
-	{ icon: 'heart', title: 'Family', text: 'Family is the most important thing you have, and should be cherished.' }
+	{ icon: 'code', title: 'Technical exploration', text: 'I invest time in personal software projects to evaluate new technologies, test ideas, and refine engineering practices.' },
+	{ icon: 'rocket', title: 'Applied science', text: 'I follow developments in computer science, mathematics, and related research to stay current and broaden technical perspective.' },
+	{ icon: 'plane', title: 'International perspective', text: 'Travel helps me understand different cultures and user contexts, which strengthens communication and product thinking.' },
+	{ icon: 'heart', title: 'Family and balance', text: 'I value family life and long-term balance, which supports sustained focus, reliability, and high-quality work.' }
 ];
 
 /* Skills, grouped */
