@@ -31,7 +31,7 @@ window.PROJECTS = [
 		description:
 			'I led the development of an immersive training experience for Sundsvall–Timrå Airport, ' +
 			'covering aircraft marshalling and fire-extinguishing procedures in a safe, repeatable virtual environment.',
-		media: { kind: 'image', src: 'assets/img/_0009_SundsvalTimraAirport.jpg' }
+		media: { kind: 'image', src: 'assets/img/SundsvalTimraAirport.jpg' }
 	},
 	{
 		title: 'SJ Tidsresan',
@@ -49,7 +49,7 @@ window.PROJECTS = [
 		description:
 			'I extended FujiFilm’s application, adding new machines and richer interactions to create a more ' +
 			'engaging, true-to-life product experience.',
-		media: { kind: 'image', src: 'assets/img/_0008_FujiFilm.jpg' }
+		media: { kind: 'image', src: 'assets/img/FujiFilm.jpg' }
 	},
 	{
 		title: 'AlixLabs',
@@ -59,7 +59,7 @@ window.PROJECTS = [
 			'I led the creation of an immersive guided tour through the semiconductor process, visualising how ' +
 			'microchips are manufactured step by step.',
 		note: '*Full scene can’t be shown due to NDA.',
-		media: { kind: 'image', src: 'assets/img/_0007_AlixLabs.jpg' }
+		media: { kind: 'image', src: 'assets/img/AlixLabs.jpg' }
 	},
 	{
 		title: 'Atlant3D',
@@ -69,7 +69,7 @@ window.PROJECTS = [
 			'I directed an interactive guided tour of Atlant3D’s atomic-scale manufacturing, walking viewers ' +
 			'through the complete microchip printing process.',
 		note: '*Full scene can’t be shown due to NDA.',
-		media: { kind: 'image', src: 'assets/img/_0006_Atlant3D.jpg' }
+		media: { kind: 'image', src: 'assets/img/Atlant3D.jpg' }
 	},
 	{
 		title: 'Wind Turbine Repair',
@@ -78,7 +78,7 @@ window.PROJECTS = [
 		description:
 			'I developed an immersive guided tour demonstrating the step-by-step repair of a damaged wind ' +
 			'turbine, turning a complex maintenance procedure into a clear visual walkthrough.',
-		media: { kind: 'image', src: 'assets/img/_0005_Wind%20Turbine%20Repair.jpg' }
+		media: { kind: 'image', src: 'assets/img/Wind Turbine Repair.jpg' }
 	},
 	{
 		title: 'Volvo Stone Crusher',
@@ -87,7 +87,7 @@ window.PROJECTS = [
 		description:
 			'I built an interactive demonstration of Volvo’s new electric stone crusher and its eco mode, ' +
 			'controlled through a virtual iPad that drives the machine in real time.',
-		media: { kind: 'image', src: 'assets/img/_0004_Volvo%20Stonecrusher.jpg' }
+		media: { kind: 'image', src: 'assets/img/Volvo Stonecrusher.jpg' }
 	},
 	{
 		title: 'TactoTek',
@@ -96,7 +96,7 @@ window.PROJECTS = [
 		description:
 			'I created an experience showcasing TactoTek’s smart surfaces inside a vehicle interior, ' +
 			'highlighting their seamless, touch-sensitive technology.',
-		media: { kind: 'image', src: 'assets/img/_0003_TactoTek.jpg' }
+		media: { kind: 'image', src: 'assets/img/TactoTek.jpg' }
 	},
 	{
 		title: 'Car Showroom',
@@ -105,7 +105,7 @@ window.PROJECTS = [
 		description:
 			'I designed a compact Mixed Reality platform for showcasing vehicles, letting customers explore ' +
 			'cars virtually at full scale.',
-		media: { kind: 'image', src: 'assets/img/_0002_Car%20Showroom.jpg' }
+		media: { kind: 'image', src: 'assets/img/Car Showroom.jpg' }
 	},
 	{
 		title: 'PC Emulator',
@@ -114,7 +114,7 @@ window.PROJECTS = [
 		description:
 			'I implemented a complete virtual 500 MHz computer inside Unity, fully programmable in C/C++ and ' +
 			'emulating a working machine in real time.',
-		media: { kind: 'image', src: 'assets/img/_0001_PC%20Emulator.jpg' }
+		media: { kind: 'image', src: 'assets/img/PC Emulator.jpg' }
 	},
 	{
 		title: 'RISC-V Emulator',
@@ -123,7 +123,7 @@ window.PROJECTS = [
 		description:
 			'I built a full RISC-V microprocessor emulator, faithfully reproducing the architecture’s ' +
 			'instruction set and execution pipeline.',
-		media: { kind: 'image', src: 'assets/img/_0000_RISCV%20Emulator.jpg' }
+		media: { kind: 'image', src: 'assets/img/RISCV Emulator.jpg' }
 	},
 
 	{
@@ -337,63 +337,63 @@ window.PROJECTS = [
  */
 window.SLIDES = [
 	{
-		file: '_0009_SundsvalTimraAirport.jpg',
+		file: 'SundsvalTimraAirport.jpg',
 		title: 'Sundsvall–Timrå Airport',
 		text: 'As CTO I led the development of an immersive training experience for Sundsvall–Timrå Airport, covering aircraft marshalling and fire-extinguishing procedures in a safe, repeatable virtual environment.',
 		tags: ['CTO', 'Training', 'VR']
 	},
 	{
-		file: '_0008_FujiFilm.jpg',
+		file: 'FujiFilm.jpg',
 		title: 'FujiFilm',
 		text: 'As Lead Developer I extended FujiFilm’s application, adding new machines and richer interactions to create a more engaging, true-to-life product experience.',
 		tags: ['Lead Developer', 'Unity', 'AR']
 	},
 	{
-		file: '_0007_AlixLabs.jpg',
+		file: 'AlixLabs.jpg',
 		title: 'AlixLabs',
 		text: 'As CTO I led the creation of an immersive guided tour through the semiconductor process, visualising how microchips are manufactured step by step.',
 		tags: ['CTO', 'Guided Tour', 'Unity'],
 		note: '*Full scene can’t be shown due to NDA.'
 	},
 	{
-		file: '_0006_Atlant3D.jpg',
+		file: 'Atlant3D.jpg',
 		title: 'Atlant3D',
 		text: 'As CTO I directed an interactive guided tour of Atlant3D’s atomic-scale manufacturing, walking viewers through the complete microchip printing process.',
 		tags: ['CTO', 'Guided Tour', 'Unity'],
 		note: '*Full scene can’t be shown due to NDA.'
 	},
 	{
-		file: '_0005_Wind Turbine Repair.jpg',
+		file: 'Wind Turbine Repair.jpg',
 		title: 'Wind Turbine Repair',
 		text: 'As CTO I developed an immersive guided tour demonstrating the step-by-step repair of a damaged wind turbine, turning a complex maintenance procedure into a clear visual walkthrough.',
 		tags: ['CTO', 'Guided Tour', 'VR']
 	},
 	{
-		file: '_0004_Volvo Stonecrusher.jpg',
+		file: 'Volvo Stonecrusher.jpg',
 		title: 'Volvo Stone Crusher',
 		text: 'As CTO I built an interactive demonstration of Volvo’s new electric stone crusher and its eco mode, controlled through a virtual iPad that drives the machine in real time.',
 		tags: ['CTO', 'Volvo', 'Interactive']
 	},
 	{
-		file: '_0003_TactoTek.jpg',
+		file: 'TactoTek.jpg',
 		title: 'TactoTek',
 		text: 'As CTO I created an experience showcasing TactoTek’s smart surfaces inside a vehicle interior, highlighting their seamless, touch-sensitive technology.',
 		tags: ['CTO', 'Automotive', 'AR']
 	},
 	{
-		file: '_0002_Car Showroom.jpg',
+		file: 'Car Showroom.jpg',
 		title: 'Car Showroom',
 		text: 'As CTO I designed a compact Mixed Reality platform for showcasing vehicles, letting customers explore cars virtually at full scale.',
 		tags: ['CTO', 'Mixed Reality', 'Automotive']
 	},
 	{
-		file: '_0001_PC Emulator.jpg',
+		file: 'PC Emulator.jpg',
 		title: 'PC Emulator',
 		text: 'As solo developer I implemented a complete virtual 500 MHz computer inside Unity, fully programmable in C/C++ and emulating a working machine in real time.',
 		tags: ['Solo Developer', 'Emulation', 'C/C++']
 	},
 	{
-		file: '_0000_RISCV Emulator.jpg',
+		file: 'RISCV Emulator.jpg',
 		title: 'RISC-V Emulator',
 		text: 'As solo developer I built a full RISC-V microprocessor emulator, faithfully reproducing the architecture’s instruction set and execution pipeline.',
 		tags: ['Solo Developer', 'Emulation', 'RISC-V']

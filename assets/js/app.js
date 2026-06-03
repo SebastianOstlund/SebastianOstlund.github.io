@@ -136,6 +136,12 @@
 	}
 
 	var imageLightbox = null;
+	function normalizeMediaPath(path) {
+		if (!path) return path;
+		if (/^(https?:)?\/\//i.test(path) || path.indexOf('data:') === 0) return path;
+		return path.replace(/\\/g, '/');
+	}
+
 	function ensureImageLightbox() {
 		if (imageLightbox) return imageLightbox;
 
@@ -182,13 +188,14 @@
 		wrap.setAttribute('aria-label', 'Open image preview');
 
 		var img = el('img');
-		img.src = src;
+		var normalizedSrc = normalizeMediaPath(src);
+		img.src = normalizedSrc;
 		img.loading = 'lazy';
 		img.alt = '';
 		img.width = 480; img.height = 360;
 		wrap.appendChild(img);
 
-		var fullSrc = href || src;
+		var fullSrc = normalizeMediaPath(href || src);
 		function openImage() {
 			ensureImageLightbox().open(fullSrc, 'Expanded project image');
 		}
