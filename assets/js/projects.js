@@ -125,15 +125,24 @@ window.PROJECTS = [
 			'instruction set and execution pipeline.',
 		media: { kind: 'image', src: 'assets/img/projects/RISCV Emulator.jpg' }
 	},
+	{
+		title: 'Mars Quest',
+		role: 'CTO, Lead Developer',
+		tags: ['VR'],
+		description:
+			'Mars Quest is a short but intense VR adventure where groups explore the planet Mars through ' +
+			'interactive and challenging gameplay designed for both newcomers and experienced VR users. ' +
+			'The experience was tested and approved by astronauts Marcos Pontes, Raja Chari, Nora Al Matrooshi, and Christer Fuglesang.',
+		media: { kind: 'youtube', id: 'TOWI0ScpDSk' }
+	},
 
 	{
 		title: 'Pop-In & Play — Space Journey',
 		role: 'Lead Developer, 3D Content Creator',
 		tags: ['AR', 'Unity'],
 		description:
-			'Space Journey is a children’s book by Sweden’s first and only astronaut, Christer ' +
-			'Fuglesang. By applying Mixed Reality to his book series, we bridge the gap between the ' +
-			'physical and digital world. Using our AR app, the storybook comes to life with interactive characters.',
+			'Pop-In & Play brings Christer Fuglesang’s Space Journey book to life through AR, turning the ' +
+			'printed story into an interactive educational experience for children and families.',
 		media: { kind: 'youtube', id: 'Fjn9oJV25qQ' },
 		links: [
 			{ store: 'play', url: 'https://play.google.com/store/apps/details?id=com.imitera' },
@@ -145,9 +154,8 @@ window.PROJECTS = [
 		role: 'Lead Developer',
 		tags: ['AR', 'Unity', 'GDC', 'Networking'],
 		description:
-			'Play chess in Mixed Reality with a friend — choose from four sets: Classic, Medieval, ' +
-			'Holographic and the magical Wizard Chess. We took it to GDC 2018, where we met Charlie Fink, ' +
-			'who wrote a page about Magic Chess in his book “Metaverse — An AR Enabled Guide to AR & VR”.',
+			'Magic Chess is a networked mixed-reality chess experience with multiple themed boards and pieces, ' +
+			'showcased at GDC 2018 as an example of social AR gameplay.',
 		media: { kind: 'youtube', id: 'z0SsKjW8gOc' },
 		links: [
 			{ store: 'play', url: 'https://play.google.com/store/apps/details?id=com.imitera.mrchess' },
@@ -159,9 +167,8 @@ window.PROJECTS = [
 		role: 'Solo Developer, 3D Content Creator',
 		tags: ['AR', 'Unity', 'Lego'],
 		description:
-			'Our 6DOF Touchcard solution lets you build with virtual LEGO® bricks using only a business ' +
-			'card. Pick a set or search the virtual toolbox, follow real building instructions, and save your ' +
-			'models in our AR app to reload and continue later.',
+			'Virtual Lego uses a 6DOF marker solution to let users build with digital LEGO bricks in AR, ' +
+			'follow guided instructions, and save progress between sessions.',
 		media: { kind: 'youtube', id: 'hGfI2FcKA2A' }
 	},
 	{
@@ -169,9 +176,8 @@ window.PROJECTS = [
 		role: 'Lead Developer',
 		tags: ['AR', 'Unity', 'Networking'],
 		description:
-			'A classic reimagined. Everyone has played Battleship — with AR we make it alive, fighting a ' +
-			'war right on top of your kitchen table. The visuals are so good you almost hope the opponent ' +
-			'sinks your ships, just to watch it happen.',
+			'Fleet of Steel reimagines the classic Battleship formula as a shared AR tabletop game with ' +
+			'real-time multiplayer and cinematic battle presentation.',
 		media: { kind: 'youtube', id: 'og2i9L5KLtY' }
 	},
 	{
@@ -179,9 +185,8 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['C++', 'OpenGL', 'Shaders', 'Networking'],
 		description:
-			'BikeAround lets you experience the world through Google Street View. Handlebars and a pedalling ' +
-			'unit capture the feeling of real cycling as the user explores imagery in a 360° view, deciding ' +
-			'for themselves when to stop or keep going.',
+			'BikeAround combines Google Street View with custom bike hardware to create an interactive ' +
+			'cycling simulator that links physical pedaling to immersive 360-degree navigation.',
 		media: { kind: 'youtube', id: 'dM8lMxVKxNM' }
 	},
 	{
@@ -189,10 +194,8 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['Parser', 'Virtual Machine', 'Byte Code', 'C#'],
 		description:
-			'A scripting language that lets you change code without redeploying or restarting the app. ' +
-			'Scripting languages are often slow, so I added a “script → C#” translation unit, ' +
-			'letting code run at native speed on rebuild. It includes code completion and error handling, and ' +
-			'drops into Unity as a console or in-game computer screen.',
+			'I developed a custom scripting language with parser, bytecode VM, and tooling for code completion ' +
+			'and error handling, plus optional script-to-C# translation for higher runtime performance.',
 		media: { kind: 'image', src: 'assets/img/projects/BollLang.png' }
 	},
 	{
@@ -200,9 +203,8 @@ window.PROJECTS = [
 		role: 'Lead Developer',
 		tags: ['VR', 'Unity'],
 		description:
-			'A virtual theme park at home — a collection of VR worlds explored through our unique ' +
-			'“jaywalking” system, which lets users physically traverse the world in an immersive way ' +
-			'instead of teleporting or other methods that break immersion.',
+			'Slipstream is a VR experience collection built around a custom locomotion model that enables ' +
+			'natural movement and stronger immersion than traditional teleport-based interaction.',
 		media: { kind: 'youtube', id: 'p3LnKVI_y18' }
 	},
 	{
@@ -210,9 +212,8 @@ window.PROJECTS = [
 		role: 'Lead Developer, 3D Content Creator',
 		tags: ['VR', 'Unity', 'Photogrammetry'],
 		description:
-			'Enter the palatial winter home of Count Walther and Countess Wilhelmina von Hallwyl, built in ' +
-			'1898. The VR experience is captured with photogrammetry to create a virtual copy of the museum, ' +
-			'shown on an Oculus Quest.',
+			'Hallwylska is a photogrammetry-based VR reconstruction of the Hallwyl Museum, designed to provide ' +
+			'an accurate and accessible digital visit experience on standalone VR hardware.',
 		media: { kind: 'youtube', id: '8L6H5o6dGRk' }
 	},
 	{
@@ -220,9 +221,8 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['C++', 'OpenGL', 'GLSL', 'Shaders'],
 		description:
-			'Ray tracing and ray casting have always fascinated me — more beautiful than rasterized graphics, ' +
-			'both visually and mathematically. I’ve spent plenty of time developing my own techniques. ' +
-			'The raycaster in the video is implemented in one single big shader, created for my Master’s thesis.',
+			'Raytracers is a graphics research project focused on custom ray tracing and ray casting techniques, ' +
+			'including a full raycaster implemented in GLSL as part of my Master’s thesis work.',
 		media: { kind: 'youtube', id: 'qCk8DNCnrvU' }
 	},
 	{
@@ -230,9 +230,8 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['Unity', 'Shaders'],
 		description:
-			'Performance optimization matters in all game development. For most of our games I personally went ' +
-			'through every shader for efficiency and quality, writing my own or improving existing ones. For ' +
-			'one project I added AR reflection so virtual objects blend into the environment — it’s the small details that matter.',
+			'I optimized and developed production shaders for Unity projects, improving visual quality and runtime ' +
+			'performance, including AR reflection workflows for stronger scene integration.',
 		media: { kind: 'youtube', id: 'hzsXPAK9sJA' }
 	},
 	{
@@ -240,9 +239,8 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['AR', 'Unity'],
 		description:
-			'Setting up tile-based board games can be slow. TI4 has near-identical tiles you must match using ' +
-			'corner numbers and a lookup table. So I built an AR demo that sets up TI4 beginner maps — everyone ' +
-			'loves it, especially the visuals near the end of the video.',
+			'I built an AR setup assistant for Twilight Imperium 4 that streamlines map assembly, reduces setup ' +
+			'time, and improves onboarding for new players.',
 		media: { kind: 'youtube', id: '7197pnik900' }
 	},
 	{
@@ -250,8 +248,8 @@ window.PROJECTS = [
 		role: 'Lead Developer',
 		tags: ['Unity', 'AR'],
 		description:
-			'Alongside serious work it’s important to test new things, follow your imagination into new ' +
-			'areas — and most importantly, to have fun. P.S. wearing the silly-looking box was not fun!',
+			'A collection of rapid AR prototypes created to test new ideas, validate interaction concepts, ' +
+			'and explore emerging technology directions outside core product work.',
 		media: { kind: 'image', src: 'assets/img/projects/AR_Pistol_and_amour.jpg', href: 'assets/img/projects/AR_Pistol_and_amour.jpg' }
 	},
 	{
@@ -259,9 +257,9 @@ window.PROJECTS = [
 		role: 'Lead Developer',
 		tags: ['AR', 'Unity'],
 		description:
-			'Brighter needed to showcase their IoT insulin device, Actiste, before a finished product existed. ' +
-			'Our app gives an interactive virtual experience with a real-life feel of the product and a complete demonstration of its functions.',
-		media: { kind: 'youtube', id: 'Xv3Q5QKtEzI' },
+			'The Actiste Mixed Reality Demo shows the complete user flow: taking a blood sample, checking blood sugar, ' +
+			'uploading data to the cloud, and receiving guidance on when to use insulin and how much to take.',
+		media: { kind: 'youtube', id: 'R83UI7Wq8fk' },
 		links: [
 			{ store: 'play', url: 'https://play.google.com/store/apps/details?id=com.Brighter.ActisteAR' },
 			{ store: 'app', url: 'https://itunes.apple.com/us/app/actiste-mr-demonstration/id1186806013?mt=8' }
@@ -272,9 +270,8 @@ window.PROJECTS = [
 		role: 'Lead Developer',
 		tags: ['AR', 'Unity'],
 		description:
-			'Camanio Care needed to show the true size of their products without shipping a physical unit. We ' +
-			'built the Camanio MR Demonstration, where you can interact with products virtually to get a feel ' +
-			'for how they would work in real life.',
+			'Bestic AR is an interactive product demonstration that presents true-to-scale device visualization ' +
+			'and core functionality in mixed reality before physical hardware is available.',
 		media: { kind: 'youtube', id: 'TtiKRi8Qf1I' },
 		links: [
 			{ store: 'play', url: 'https://play.google.com/store/apps/details?id=com.Brighter.jDomeAR&gl=SE' },
@@ -286,8 +283,8 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['C++', 'Intel RealSense'],
 		description:
-			'For UVR Nordic I built a prototype AR platform for city planning, letting architects freely move ' +
-			'houses around and make modifications to their city plan.',
+			'I developed a prototype AR platform for urban planning that enables architects to position, adjust, ' +
+			'and evaluate building layouts directly in an interactive 3D context.',
 		media: { kind: 'image', src: 'assets/img/projects/UVR.jpg' }
 	},
 	{
@@ -295,9 +292,8 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['C++', 'Neural Network', 'AI'],
 		description:
-			'Car paint must resist stone chips, tested by firing stones at a painted plate and guesstimating ' +
-			'the damage. I replaced the guesswork with image recognition that classifies damage size and ' +
-			'produces an objective damage report.',
+			'I developed an image-recognition solution for paint durability testing that classifies stone-chip ' +
+			'damage and generates objective, repeatable quality reports.',
 		media: { kind: 'image', src: 'assets/img/projects/volvo.png', href: 'assets/img/projects/volvo.png' }
 	},
 	{
@@ -305,9 +301,8 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['C++', 'Intel RealSense'],
 		description:
-			'New players to a first-person game instinctively lean to dodge or turn — which normally does ' +
-			'nothing. With Intel® RealSense and jDome® TILT we let you “relearn” that instinct ' +
-			'for a more active, immersive gaming experience.',
+			'jDome Tilt integrates head-tracking with first-person gameplay so natural leaning and movement ' +
+			'translate into real in-game control for a more immersive player experience.',
 		media: { kind: 'youtube', id: 'AHN5mMZijTQ' }
 	},
 	{
@@ -315,8 +310,8 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['C++', 'Intel RealSense'],
 		description:
-			'A set of functionalities for adding a head-movement system to your game. Head movement is ' +
-			'separated from the character’s body, so you can look one way while moving another — and even look around corners.',
+			'A reusable toolkit for adding head-movement controls to games, enabling independent look and ' +
+			'movement behavior such as directional peeking and corner viewing.',
 		media: { kind: 'youtube', id: '9kQ701404PA' }
 	},
 	{
@@ -324,9 +319,8 @@ window.PROJECTS = [
 		role: 'Developer',
 		tags: ['Unity', 'Kinect'],
 		description:
-			'The world’s first public portal to a virtual world where you use body movement to move in the ' +
-			'environment. Elderly users can “take a walk” in a forest with minimised risk of falling, ' +
-			'on a treadmill with protective handlebars.',
+			'jDome Walkaround is a body-tracked virtual mobility platform that lets users navigate digital ' +
+			'environments through natural movement, including safe training and wellness scenarios.',
 		media: { kind: 'youtube', id: 'aqDdf0WtFis' }
 	}
 ];
