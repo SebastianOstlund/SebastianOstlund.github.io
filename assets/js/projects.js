@@ -335,6 +335,15 @@ window.PROJECTS = [
 			'jDome Walkaround is a body-tracked virtual mobility platform that lets users navigate digital ' +
 			'environments through natural movement, including safe training and wellness scenarios.',
 		media: { kind: 'youtube', id: 'aqDdf0WtFis' }
+	},
+	{
+		title: 'And much more',
+		role: 'Selected work',
+		tags: ['Machine Learning', 'Visualization', 'VR', 'Web', 'Apps'],
+		description:
+			'And much more — across machine learning, visualization, VR, web, and apps, I have built a wide range of prototypes, tools, and production software beyond the featured projects above.'
+		,
+		media: { kind: 'image', src: 'assets/img/projects/OtherProjects.jpg', href: 'assets/img/projects/OtherProjects.jpg' }
 	}
 ];
 
