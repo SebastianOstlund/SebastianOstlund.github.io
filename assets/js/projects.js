@@ -108,14 +108,13 @@ window.PROJECTS = [
 		media: { kind: 'image', src: 'assets/img/projects/Car Showroom.jpg' }
 	},
 	{
-		title: 'PC Emulator',
-		role: 'Solo Developer',
-		tags: ['Emulation', 'C/C++'],
+		title: 'Volvo Penta Port',
+		role: 'Lead Developer',
+		tags: ['Training', 'Simulation', 'VR', 'Volvo'],
 		description:
-			'Designed and implemented a complete virtual 500 MHz computer inside Unity, featuring a custom ' +
-			'CPU, memory model, and runtime capable of executing C/C++ programs in real time. Engineered for ' +
-			'live scripting, deterministic performance, and zero-allocation execution.',
-		media: { kind: 'image', src: 'assets/img/projects/PC Emulator.jpg' }
+			'I developed a training simulator for Volvo Penta focused on operating a terminal tractor in port logistics workflows. ' +
+			'The experience trains drivers to move containers safely and efficiently from the container yard to the ship, with emphasis on maneuvering, positioning, and procedural accuracy under realistic conditions.',
+		media: { kind: 'image', src: 'assets/img/projects/PentaPort.jpg' }
 	},
 	{
 		title: 'RISC-V Emulator',
