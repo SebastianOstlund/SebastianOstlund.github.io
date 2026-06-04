@@ -36,9 +36,9 @@ window.PROJECTS = [
 	{
 		title: 'SJ Time Journey',
 		role: 'CTO, Lead Developer',
-		tags: ['Interactive Experience', 'Train', 'History'],
+		tags: ['Interactive Experience', 'Trains', 'History'],
 		description:
-			'I led the architecture and development of an interactive timeline experience for SJ, guiding users ' +
+			'I led the architecture and development of an interactive timeline experience for SJ (Swedish State Railways), guiding users ' +
 			'through the history of trains in Sweden with a clear narrative, polished visuals, and robust technical execution.',
 		media: { kind: 'image', src: 'assets/img/projects/SJTidsresan.jpg' }
 	},
@@ -112,8 +112,9 @@ window.PROJECTS = [
 		role: 'Solo Developer',
 		tags: ['Emulation', 'C/C++'],
 		description:
-			'I implemented a complete virtual 500 MHz computer inside Unity, fully programmable in C/C++ and ' +
-			'emulating a working machine in real time.',
+			'Designed and implemented a complete virtual 500 MHz computer inside Unity, featuring a custom ' +
+			'CPU, memory model, and runtime capable of executing C/C++ programs in real time. Engineered for ' +
+			'live scripting, deterministic performance, and zero-allocation execution.',
 		media: { kind: 'image', src: 'assets/img/projects/PC Emulator.jpg' }
 	},
 	{
@@ -196,7 +197,7 @@ window.PROJECTS = [
 		description:
 			'I developed a custom scripting language with parser, bytecode VM, and tooling for code completion ' +
 			'and error handling, plus optional script-to-C# translation for higher runtime performance.',
-		media: { kind: 'image', src: 'assets/img/projects/BollLang.png' }
+		media: { kind: 'image', src: 'assets/img/projects/BollLang.jpg' }
 	},
 	{
 		title: 'Slipstream',
@@ -294,7 +295,7 @@ window.PROJECTS = [
 		description:
 			'I developed an image-recognition solution for paint durability testing that classifies stone-chip ' +
 			'damage and generates objective, repeatable quality reports.',
-		media: { kind: 'image', src: 'assets/img/projects/volvo.png', href: 'assets/img/projects/volvo.png' }
+		media: { kind: 'image', src: 'assets/img/projects/volvo.jpg', href: 'assets/img/projects/volvo.jpg' }
 	},
 	{
 		title: 'jDome Tilt',

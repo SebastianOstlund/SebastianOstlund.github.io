@@ -1,18 +1,16 @@
-/*
- * cube.js — a self-contained WebGL rotating cube with mouse/touch rotation.
- * No external libraries. Exposes window.CubeDemo.mount(container).
- *
- * The cube auto-spins gently until you grab it; drag with mouse or finger to
- * rotate, release to keep spinning with the velocity you let go at.
- */
 (function () {
 	'use strict';
 
-	/* ---- tiny 4x4 matrix helpers (column-major, like WebGL expects) ---- */
-	var M = {
+	var Mat4 = {
 		identity: function () {
-			return [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1];
+			return [
+				1, 0, 0, 0,
+				0, 1, 0, 0,
+				0, 0, 1, 0,
+				0, 0, 0, 1
+			];
 		},
+
 		multiply: function (a, b) {
 			var o = new Array(16);
 			for (var r = 0; r < 4; r++) {
@@ -26,8 +24,9 @@
 			}
 			return o;
 		},
+
 		perspective: function (fovy, aspect, near, far) {
-			var f = 1 / Math.tan(fovy / 2);
+			var f = 1 / Math.tan(fovy * 0.5);
 			var nf = 1 / (near - far);
 			return [
 				f / aspect, 0, 0, 0,
@@ -36,215 +35,643 @@
 				0, 0, (2 * far * near) * nf, 0
 			];
 		},
+
 		translate: function (m, x, y, z) {
-			var t = M.identity();
-			t[12] = x; t[13] = y; t[14] = z;
-			return M.multiply(m, t);
+			var t = Mat4.identity();
+			t[12] = x;
+			t[13] = y;
+			t[14] = z;
+			return Mat4.multiply(m, t);
 		},
+
 		rotateX: function (m, a) {
-			var c = Math.cos(a), s = Math.sin(a);
-			return M.multiply(m, [1,0,0,0, 0,c,s,0, 0,-s,c,0, 0,0,0,1]);
+			var c = Math.cos(a);
+			var s = Math.sin(a);
+			return Mat4.multiply(m, [
+				1, 0, 0, 0,
+				0, c, s, 0,
+				0, -s, c, 0,
+				0, 0, 0, 1
+			]);
 		},
+
 		rotateY: function (m, a) {
-			var c = Math.cos(a), s = Math.sin(a);
-			return M.multiply(m, [c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1]);
+			var c = Math.cos(a);
+			var s = Math.sin(a);
+			return Mat4.multiply(m, [
+				c, 0, -s, 0,
+				0, 1, 0, 0,
+				s, 0, c, 0,
+				0, 0, 0, 1
+			]);
 		}
 	};
 
-	var VERT = [
+	function createCameraMatrix(pos, rot) {
+		var m = Mat4.identity();
+		m = Mat4.rotateX(m, -rot[0]);
+		m = Mat4.rotateY(m, -rot[1]);
+		m = Mat4.translate(m, -pos[0], -pos[1], -pos[2]);
+		return m;
+	}
+
+	function clamp(v, lo, hi) {
+		return Math.max(lo, Math.min(hi, v));
+	}
+
+	function fract(v) {
+		return v - Math.floor(v);
+	}
+
+	function hash2(ix, iy) {
+		var h = Math.sin(ix * 127.1 + iy * 311.7) * 43758.5453123;
+		return fract(h);
+	}
+
+	function smooth01(t) {
+		return t * t * (3 - 2 * t);
+	}
+
+	function lerp(a, b, t) {
+		return a + (b - a) * t;
+	}
+/*
+	function sampleValueNoise(nx, ny, grid) {
+		var fx = nx * grid;
+		var fy = ny * grid;
+		var ix = Math.floor(fx);
+		var iy = Math.floor(fy);
+		var tx = smooth01(fx - ix);
+		var ty = smooth01(fy - iy);
+
+		var v00 = hash2(ix, iy);
+		var v10 = hash2(ix + 1, iy);
+		var v01 = hash2(ix, iy + 1);
+		var v11 = hash2(ix + 1, iy + 1);
+
+		var a = lerp(v00, v10, tx);
+		var b = lerp(v01, v11, tx);
+		return lerp(a, b, ty);
+	}
+
+	function createValueNoise(size) {
+		var out = new Float32Array(size * size);
+		var octaves = [4, 8, 16, 32];
+		var amps = [0.55, 0.25, 0.14, 0.06];
+
+		for (var y = 0; y < size; y++) {
+			for (var x = 0; x < size; x++) {
+				var nx = x / (size - 1);
+				var ny = y / (size - 1);
+				var h = 0;
+				for (var i = 0; i < octaves.length; i++) {
+					h += sampleValueNoise(nx, ny, octaves[i]) * amps[i];
+				}
+				out[y * size + x] = clamp(h, 0, 1);
+			}
+		}
+		return out;
+	}*/
+
+    function hash(x, y) {
+        var n = x * 374761393 + y * 668265263;
+        n = (n ^ (n >> 13)) * 1274126177;
+        return ((n ^ (n >> 16)) >>> 0) / 4294967295;
+    }
+
+    function sampleValueNoise(nx, ny, frequency) {
+        var x = nx * frequency;
+        var y = ny * frequency;
+
+        var x0 = Math.floor(x);
+        var y0 = Math.floor(y);
+
+        var x1 = (x0 + 1) % frequency;
+        var y1 = (y0 + 1) % frequency;
+
+        x0 = x0 % frequency;
+        y0 = y0 % frequency;
+
+        var tx = x - Math.floor(x);
+        var ty = y - Math.floor(y);
+
+        var v00 = hash(x0, y0);
+        var v10 = hash(x1, y0);
+        var v01 = hash(x0, y1);
+        var v11 = hash(x1, y1);
+
+        var sx = tx * tx * (3 - 2 * tx);
+        var sy = ty * ty * (3 - 2 * ty);
+
+        var a = v00 + (v10 - v00) * sx;
+        var b = v01 + (v11 - v01) * sx;
+
+        return a + (b - a) * sy;
+    }
+    function createValueNoise(size) {
+        var out = new Float32Array(size * size);
+
+        var octaves = [4, 8, 16, 32];
+        var amps = [0.55, 0.25, 0.14, 0.06];
+
+        for (var y = 0; y < size; y++) {
+            for (var x = 0; x < size; x++) {
+
+                // IMPORTANT: divide by size, not size-1
+                var nx = x / size;
+                var ny = y / size;
+
+                var h = 0;
+
+                for (var i = 0; i < octaves.length; i++) {
+                    h += sampleValueNoise(nx, ny, octaves[i]) * amps[i];
+                }
+
+                out[y * size + x] = clamp(h, 0, 1);
+            }
+        }
+
+        return out;
+    }
+
+	function createNormalMap(heightMap, size, strength) {
+		var out = new Uint8Array(size * size * 4);
+		for (var y = 0; y < size; y++) {
+			for (var x = 0; x < size; x++) {
+				var xm = (x - 1 + size) % size;
+				var xp = (x + 1) % size;
+				var ym = (y - 1 + size) % size;
+				var yp = (y + 1) % size;
+
+				var hl = heightMap[y * size + xm];
+				var hr = heightMap[y * size + xp];
+				var hd = heightMap[ym * size + x];
+				var hu = heightMap[yp * size + x];
+
+				var nx = (hl - hr) * strength;
+				var ny = (hd - hu) * strength;
+				var nz = 1;
+				var l = Math.sqrt(nx * nx + ny * ny + nz * nz) || 1;
+
+				nx /= l;
+				ny /= l;
+				nz /= l;
+
+				var o = (y * size + x) * 4;
+				out[o + 0] = ((nx * 0.5 + 0.5) * 255) | 0;
+				out[o + 1] = ((ny * 0.5 + 0.5) * 255) | 0;
+				out[o + 2] = ((nz * 0.5 + 0.5) * 255) | 0;
+				out[o + 3] = 255;
+			}
+		}
+		return out;
+	}
+
+	function createHeightTextureData(heightMap, size) {
+		var out = new Uint8Array(size * size * 4);
+		for (var i = 0; i < size * size; i++) {
+			var v = (heightMap[i] * 255) | 0;
+			var o = i * 4;
+			out[o + 0] = v;
+			out[o + 1] = v;
+			out[o + 2] = v;
+			out[o + 3] = 255;
+		}
+		return out;
+	}
+
+	var CUBE_VERT_SRC = [
 		'attribute vec3 aPos;',
 		'attribute vec3 aNormal;',
 		'attribute vec3 aColor;',
 		'uniform mat4 uModel;',
+		'uniform mat4 uView;',
 		'uniform mat4 uProj;',
+		'varying vec3 vWorldPos;',
+		'varying vec3 vWorldNormal;',
 		'varying vec3 vColor;',
-		'varying vec3 vNormal;',
 		'void main() {',
-		'  gl_Position = uProj * uModel * vec4(aPos, 1.0);',
-		'  vNormal = mat3(uModel) * aNormal;',
+		'  vec4 wp = uModel * vec4(aPos, 1.0);',
+		'  vWorldPos = wp.xyz;',
+		'  vWorldNormal = normalize(mat3(uModel) * aNormal);',
 		'  vColor = aColor;',
+		'  gl_Position = uProj * uView * wp;',
 		'}'
 	].join('\n');
 
-	var FRAG = [
+	var CUBE_FRAG_SRC = [
 		'precision mediump float;',
+		'varying vec3 vWorldPos;',
+		'varying vec3 vWorldNormal;',
 		'varying vec3 vColor;',
-		'varying vec3 vNormal;',
+		'uniform vec3 uCamPos;',
+		'uniform vec3 uSunDir;',
 		'void main() {',
-		'  vec3 light = normalize(vec3(0.4, 0.7, 1.0));',
-		'  float diff = max(dot(normalize(vNormal), light), 0.0);',
-		'  float shade = 0.35 + 0.65 * diff;',          // ambient + diffuse
-		'  gl_FragColor = vec4(vColor * shade, 1.0);',
+		'  vec3 N = normalize(vWorldNormal);',
+		'  vec3 L = normalize(uSunDir);',
+		'  vec3 V = normalize(uCamPos - vWorldPos);',
+		'  float diffuse = max(dot(N, L), 0.0);',
+		'  vec3 H = normalize(L + V);',
+		'  float spec = pow(max(dot(N, H), 0.0), 48.0);',
+		'  vec3 color = vColor * (0.2 + diffuse * 0.9) + vec3(spec) * 0.15;',
+		'  gl_FragColor = vec4(color, 1.0);',
 		'}'
 	].join('\n');
 
-	function compile(gl, type, src) {
-		var s = gl.createShader(type);
-		gl.shaderSource(s, src);
-		gl.compileShader(s);
-		if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-			throw new Error('Shader compile error: ' + gl.getShaderInfoLog(s));
+	var WATER_VERT_SRC = [
+		'attribute vec3 aPos;',
+		'attribute vec3 aNormal;',
+		'attribute vec2 aUv;',
+		'uniform mat4 uModel;',
+		'uniform mat4 uView;',
+		'uniform mat4 uProj;',
+		'varying vec3 vWorldPos;',
+		'varying vec3 vWorldNormal;',
+		'varying vec2 vUv;',
+		'void main() {',
+		'  vec4 wp = uModel * vec4(aPos, 1.0);',
+		'  vWorldPos = wp.xyz;',
+		'  vWorldNormal = normalize(mat3(uModel) * aNormal);',
+		'  vUv = aUv;',
+		'  gl_Position = uProj * uView * wp;',
+		'}'
+	].join('\n');
+
+	var WATER_FRAG_SRC = [
+		'precision mediump float;',
+		'varying vec3 vWorldPos;',
+		'varying vec3 vWorldNormal;',
+		'varying vec2 vUv;',
+		'uniform vec3 uCamPos;',
+		'uniform vec3 uSunDir;',
+		'uniform vec3 uBaseColor;',
+		'uniform float uTime;',
+		'uniform sampler2D uHeightTex;',
+		'uniform sampler2D uNormalTex;',
+		'void main() {',
+		'  vec3 N = normalize(vWorldNormal);',
+		'  vec3 L = normalize(uSunDir);',
+		'  vec3 V = normalize(uCamPos - vWorldPos);',
+		'  vec2 flowA = vUv * 4.0 + vec2(uTime * 0.03, uTime * 0.017);',
+		'  vec2 flowB = vUv * 4.0 + vec2(-uTime * 0.022, uTime * 0.026);',
+		'  vec3 tnA = texture2D(uNormalTex, flowA).xyz * 2.0 - 1.0;',
+		'  vec3 tnB = texture2D(uNormalTex, flowB).xyz * 2.0 - 1.0;',
+		'  vec3 tn = normalize(mix(tnA, tnB, 0.5));',
+		'  vec3 tangentX = vec3(1.0, 0.0, 0.0);',
+		'  vec3 tangentZ = vec3(0.0, 0.0, 1.0);',
+		'  vec3 up = vec3(0.0, 1.0, 0.0);',
+		'  N = normalize(tangentX * tn.x + tangentZ * tn.y + up * tn.z);',
+		'  float diffuse = max(dot(N, L), 0.0);',
+		'  vec3 H = normalize(L + V);',
+		'  float spec = pow(max(dot(N, H), 0.0), 120.0);',
+		'  float fresnel = pow(1.0 - max(dot(N, V), 0.0), 3.0);',
+		'  float h = texture2D(uHeightTex, flowA * 0.5).r;',
+		'  vec3 deep = uBaseColor * 0.65;',
+		'  vec3 shallow = uBaseColor * 1.25;',
+		'  vec3 water = mix(deep, shallow, h);',
+		'  vec3 color = water * (0.16 + diffuse * 0.9) + vec3(spec) * (0.7 + fresnel * 0.8);',
+		'  gl_FragColor = vec4(color, 1.0);',
+		'}'
+	].join('\n');
+
+	function compileShader(gl, type, src) {
+		var sh = gl.createShader(type);
+		gl.shaderSource(sh, src);
+		gl.compileShader(sh);
+		if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+			var msg = gl.getShaderInfoLog(sh) || 'Unknown shader compile error';
+			gl.deleteShader(sh);
+			throw new Error(msg);
 		}
-		return s;
+		return sh;
 	}
 
-	// Per-face cube: 6 faces * 4 verts. Each vertex = pos(3) normal(3) color(3).
-	function buildCube() {
+	function createProgram(gl, vsSrc, fsSrc) {
+		var vs = compileShader(gl, gl.VERTEX_SHADER, vsSrc);
+		var fs = compileShader(gl, gl.FRAGMENT_SHADER, fsSrc);
+		var p = gl.createProgram();
+		gl.attachShader(p, vs);
+		gl.attachShader(p, fs);
+		gl.linkProgram(p);
+		gl.deleteShader(vs);
+		gl.deleteShader(fs);
+		if (!gl.getProgramParameter(p, gl.LINK_STATUS)) {
+			var msg = gl.getProgramInfoLog(p) || 'Unknown link error';
+			gl.deleteProgram(p);
+			throw new Error(msg);
+		}
+		return p;
+	}
+
+	function createTexture(gl, size, rgbaData) {
+		var t = gl.createTexture();
+		gl.bindTexture(gl.TEXTURE_2D, t);
+		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, size, size, 0, gl.RGBA, gl.UNSIGNED_BYTE, rgbaData);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+		gl.generateMipmap(gl.TEXTURE_2D);
+		return t;
+	}
+
+	function makeCubeMesh() {
+		var verts = [];
+		var idx = [];
 		var faces = [
-			// dir,            normal,        color
-			{ n: [0, 0, 1],  c: [0.27, 0.78, 0.92] }, // +Z  cyan
-			{ n: [0, 0, -1], c: [0.55, 0.45, 0.96] }, // -Z  violet
-			{ n: [0, 1, 0],  c: [0.96, 0.45, 0.66] }, // +Y  pink
-			{ n: [0, -1, 0], c: [0.40, 0.85, 0.62] }, // -Y  green
-			{ n: [1, 0, 0],  c: [0.98, 0.70, 0.35] }, // +X  amber
-			{ n: [-1, 0, 0], c: [0.45, 0.62, 0.98] }  // -X  blue
+			{ n: [0, 0, 1], c: [0.25, 0.72, 0.92], pts: [[-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]] },
+			{ n: [0, 0, -1], c: [0.92, 0.43, 0.82], pts: [[1, -1, -1], [-1, -1, -1], [-1, 1, -1], [1, 1, -1]] },
+			{ n: [0, 1, 0], c: [0.95, 0.65, 0.28], pts: [[-1, 1, 1], [1, 1, 1], [1, 1, -1], [-1, 1, -1]] },
+			{ n: [0, -1, 0], c: [0.32, 0.85, 0.58], pts: [[-1, -1, -1], [1, -1, -1], [1, -1, 1], [-1, -1, 1]] },
+			{ n: [1, 0, 0], c: [0.95, 0.83, 0.22], pts: [[1, -1, 1], [1, -1, -1], [1, 1, -1], [1, 1, 1]] },
+			{ n: [-1, 0, 0], c: [0.46, 0.65, 0.95], pts: [[-1, -1, -1], [-1, -1, 1], [-1, 1, 1], [-1, 1, -1]] }
 		];
-		// Corner offsets for a face given its normal axis.
-		var corners = [[-1,-1],[1,-1],[1,1],[-1,1]];
-		var verts = [], indices = [];
-		faces.forEach(function (f, fi) {
-			var n = f.n;
-			for (var i = 0; i < 4; i++) {
-				var u = corners[i][0], v = corners[i][1], p;
-				if (n[2] !== 0)      p = [u * n[2], v, n[2]];      // facing Z
-				else if (n[1] !== 0) p = [u, n[1], v * n[1]];      // facing Y
-				else                 p = [n[0], v, u * -n[0]];     // facing X
-				verts.push(p[0], p[1], p[2], n[0], n[1], n[2], f.c[0], f.c[1], f.c[2]);
+		var uv = [[0, 0], [1, 0], [1, 1], [0, 1]];
+
+		for (var fi = 0; fi < faces.length; fi++) {
+			var base = verts.length / 11;
+			for (var j = 0; j < 4; j++) {
+				var pt = faces[fi].pts[j];
+				var n = faces[fi].n;
+				var c = faces[fi].c;
+				verts.push(
+					pt[0], pt[1], pt[2],
+					n[0], n[1], n[2],
+					uv[j][0], uv[j][1],
+					c[0], c[1], c[2]
+				);
 			}
-			var b = fi * 4;
-			indices.push(b, b + 1, b + 2, b, b + 2, b + 3);
-		});
-		return { verts: new Float32Array(verts), indices: new Uint16Array(indices) };
+			idx.push(base, base + 1, base + 2, base, base + 2, base + 3);
+		}
+
+		return {
+			vertices: new Float32Array(verts),
+			indices: new Uint16Array(idx)
+		};
+	}
+
+	function makePlaneMesh(size, uvScale) {
+		var s = size;
+		var verts = new Float32Array([
+			-s, 0, -s, 0, 1, 0, 0, 0, 1, 1, 1,
+			s, 0, -s, 0, 1, 0, uvScale, 0, 1, 1, 1,
+			s, 0, s, 0, 1, 0, uvScale, uvScale, 1, 1, 1,
+			-s, 0, s, 0, 1, 0, 0, uvScale, 1, 1, 1
+		]);
+		return {
+			vertices: verts,
+			indices: new Uint16Array([0, 2, 1, 0, 3, 2])
+		};
+	}
+
+	function uploadMesh(gl, mesh) {
+		var vbo = gl.createBuffer();
+		gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+		gl.bufferData(gl.ARRAY_BUFFER, mesh.vertices, gl.STATIC_DRAW);
+
+		var ibo = gl.createBuffer();
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
+		gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, mesh.indices, gl.STATIC_DRAW);
+
+		return {
+			vbo: vbo,
+			ibo: ibo,
+			count: mesh.indices.length
+		};
+	}
+
+	function bindMesh(gl, mesh, loc) {
+		var stride = 11 * 4;
+		gl.bindBuffer(gl.ARRAY_BUFFER, mesh.vbo);
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.ibo);
+
+		if (loc.aPos >= 0) {
+			gl.enableVertexAttribArray(loc.aPos);
+			gl.vertexAttribPointer(loc.aPos, 3, gl.FLOAT, false, stride, 0);
+		}
+		if (loc.aNormal >= 0) {
+			gl.enableVertexAttribArray(loc.aNormal);
+			gl.vertexAttribPointer(loc.aNormal, 3, gl.FLOAT, false, stride, 3 * 4);
+		}
+		if (loc.aUv >= 0) {
+			gl.enableVertexAttribArray(loc.aUv);
+			gl.vertexAttribPointer(loc.aUv, 2, gl.FLOAT, false, stride, 6 * 4);
+		}
+		if (loc.aColor >= 0) {
+			gl.enableVertexAttribArray(loc.aColor);
+			gl.vertexAttribPointer(loc.aColor, 3, gl.FLOAT, false, stride, 8 * 4);
+		}
 	}
 
 	function mount(container) {
 		var canvas = document.createElement('canvas');
-		canvas.className = 'cube-canvas';
-		canvas.setAttribute('aria-label', 'Interactive rotating cube — drag to spin');
+		canvas.style.width = '100%';
+		canvas.style.height = '100%';
+		canvas.style.display = 'block';
 		container.appendChild(canvas);
 
-		var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+		var gl = canvas.getContext('webgl', { antialias: true });
 		if (!gl) {
-			container.innerHTML = '<p class="cube-fallback">Your browser doesn’t support WebGL.</p>';
+			container.textContent = 'WebGL is not available in this browser.';
 			return { destroy: function () {} };
 		}
 
-		var prog = gl.createProgram();
-		gl.attachShader(prog, compile(gl, gl.VERTEX_SHADER, VERT));
-		gl.attachShader(prog, compile(gl, gl.FRAGMENT_SHADER, FRAG));
-		gl.linkProgram(prog);
-		gl.useProgram(prog);
-
-		var geo = buildCube();
-		var vbo = gl.createBuffer();
-		gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-		gl.bufferData(gl.ARRAY_BUFFER, geo.verts, gl.STATIC_DRAW);
-		var ibo = gl.createBuffer();
-		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
-		gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, geo.indices, gl.STATIC_DRAW);
-
-		var stride = 9 * 4;
-		function attrib(name, size, offset) {
-			var loc = gl.getAttribLocation(prog, name);
-			gl.enableVertexAttribArray(loc);
-			gl.vertexAttribPointer(loc, size, gl.FLOAT, false, stride, offset);
+		var cubeProgram;
+		var waterProgram;
+		try {
+			cubeProgram = createProgram(gl, CUBE_VERT_SRC, CUBE_FRAG_SRC);
+			waterProgram = createProgram(gl, WATER_VERT_SRC, WATER_FRAG_SRC);
+		} catch (err) {
+			container.textContent = 'WebGL shader error: ' + err.message;
+			return { destroy: function () {} };
 		}
-		attrib('aPos', 3, 0);
-		attrib('aNormal', 3, 3 * 4);
-		attrib('aColor', 3, 6 * 4);
-
-		var uModel = gl.getUniformLocation(prog, 'uModel');
-		var uProj = gl.getUniformLocation(prog, 'uProj');
 
 		gl.enable(gl.DEPTH_TEST);
-		gl.clearColor(0.043, 0.059, 0.090, 1.0); // matches page background
+		gl.enable(gl.CULL_FACE);
+		gl.cullFace(gl.BACK);
+		gl.frontFace(gl.CCW);
 
-		/* ---- interaction state ---- */
-		var rotX = -0.5, rotY = 0.7;     // current orientation
-		var velX = 0, velY = 0.006;      // angular velocity (idle auto-spin on Y)
-		var dragging = false, lastX = 0, lastY = 0, moved = false;
+		var cubeLoc = {
+			aPos: gl.getAttribLocation(cubeProgram, 'aPos'),
+			aNormal: gl.getAttribLocation(cubeProgram, 'aNormal'),
+			aUv: -1,
+			aColor: gl.getAttribLocation(cubeProgram, 'aColor'),
+			uModel: gl.getUniformLocation(cubeProgram, 'uModel'),
+			uView: gl.getUniformLocation(cubeProgram, 'uView'),
+			uProj: gl.getUniformLocation(cubeProgram, 'uProj'),
+			uCamPos: gl.getUniformLocation(cubeProgram, 'uCamPos'),
+			uSunDir: gl.getUniformLocation(cubeProgram, 'uSunDir')
+		};
 
-		function pointerDown(e) {
-			dragging = true; moved = false;
-			var p = point(e);
-			lastX = p.x; lastY = p.y;
-			velX = velY = 0;
-			canvas.setPointerCapture && e.pointerId != null && canvas.setPointerCapture(e.pointerId);
+		var waterLoc = {
+			aPos: gl.getAttribLocation(waterProgram, 'aPos'),
+			aNormal: gl.getAttribLocation(waterProgram, 'aNormal'),
+			aUv: gl.getAttribLocation(waterProgram, 'aUv'),
+			aColor: -1,
+			uModel: gl.getUniformLocation(waterProgram, 'uModel'),
+			uView: gl.getUniformLocation(waterProgram, 'uView'),
+			uProj: gl.getUniformLocation(waterProgram, 'uProj'),
+			uCamPos: gl.getUniformLocation(waterProgram, 'uCamPos'),
+			uSunDir: gl.getUniformLocation(waterProgram, 'uSunDir'),
+			uBaseColor: gl.getUniformLocation(waterProgram, 'uBaseColor'),
+			uTime: gl.getUniformLocation(waterProgram, 'uTime'),
+			uHeightTex: gl.getUniformLocation(waterProgram, 'uHeightTex'),
+			uNormalTex: gl.getUniformLocation(waterProgram, 'uNormalTex')
+		};
+
+		var cube = uploadMesh(gl, makeCubeMesh());
+		var plane = uploadMesh(gl, makePlaneMesh(60, 12));
+
+		var noiseSize = 256;
+		var heightMap = createValueNoise(noiseSize);
+		var normalMap = createNormalMap(heightMap, noiseSize, 7.5);
+		var heightTex = createTexture(gl, noiseSize, createHeightTextureData(heightMap, noiseSize));
+		var normalTex = createTexture(gl, noiseSize, normalMap);
+
+		var camPos = [0, 1.8, 7.5];
+		var camRot = [-0.18, 0.0];
+		var keys = Object.create(null);
+		var rafId = 0;
+		var lastTime = 0;
+
+		function onKeyDown(e) {
+			keys[e.code] = true;
 		}
-		function pointerMove(e) {
-			if (!dragging) return;
-			var p = point(e);
-			var dx = p.x - lastX, dy = p.y - lastY;
-			lastX = p.x; lastY = p.y;
-			if (Math.abs(dx) + Math.abs(dy) > 1) moved = true;
-			rotY += dx * 0.01;
-			rotX += dy * 0.01;
-			velY = dx * 0.01;            // remember last delta for inertia
-			velX = dy * 0.01;
-			e.preventDefault();
+		function onKeyUp(e) {
+			keys[e.code] = false;
 		}
-		function pointerUp() {
-			dragging = false;
-			if (!moved) velY = 0.006;    // a tap with no drag resumes gentle spin
+		function onMouseMove(e) {
+			if (document.pointerLockElement !== canvas) return;
+			camRot[1] -= e.movementX * 0.0022;
+			camRot[0] -= e.movementY * 0.0018;
+			camRot[0] = clamp(camRot[0], -1.45, 1.45);
 		}
-		function point(e) {
-			var r = canvas.getBoundingClientRect();
-			var src = e.touches ? e.touches[0] : e;
-			return { x: src.clientX - r.left, y: src.clientY - r.top };
+		function onCanvasClick() {
+			if (canvas.requestPointerLock) canvas.requestPointerLock();
 		}
 
-		// Pointer events cover mouse + touch + pen in one path.
-		canvas.addEventListener('pointerdown', pointerDown);
-		window.addEventListener('pointermove', pointerMove, { passive: false });
-		window.addEventListener('pointerup', pointerUp);
-		canvas.style.touchAction = 'none';
+		window.addEventListener('keydown', onKeyDown);
+		window.addEventListener('keyup', onKeyUp);
+		document.addEventListener('mousemove', onMouseMove);
+		canvas.addEventListener('click', onCanvasClick);
 
 		function resize() {
-			var dpr = Math.min(window.devicePixelRatio || 1, 2);
-			var w = container.clientWidth, h = container.clientHeight;
-			canvas.width = Math.round(w * dpr);
-			canvas.height = Math.round(h * dpr);
-			canvas.style.width = w + 'px';
-			canvas.style.height = h + 'px';
-			gl.viewport(0, 0, canvas.width, canvas.height);
+			var w = Math.max(1, container.clientWidth | 0);
+			var h = Math.max(1, container.clientHeight | 0);
+			if (canvas.width !== w || canvas.height !== h) {
+				canvas.width = w;
+				canvas.height = h;
+				gl.viewport(0, 0, w, h);
+			}
 		}
-		var ro = ('ResizeObserver' in window) ? new ResizeObserver(resize) : null;
-		if (ro) ro.observe(container); else window.addEventListener('resize', resize);
+		window.addEventListener('resize', resize);
 		resize();
 
-		var running = true;
-		function frame() {
-			if (!running) return;
-			if (!dragging) {
-				rotX += velX; rotY += velY;
-				velX *= 0.95; velY *= 0.95;             // inertia decay
-				if (Math.abs(velY) < 0.006 && Math.abs(velX) < 0.001) {
-					velY += (0.006 - velY) * 0.02;       // ease back to idle spin
-				}
-			}
-			var aspect = canvas.width / canvas.height;
-			var proj = M.perspective(45 * Math.PI / 180, aspect, 0.1, 100);
-			var model = M.translate(M.identity(), 0, 0, -5);
-			model = M.rotateX(model, rotX);
-			model = M.rotateY(model, rotY);
+		function updateCamera(dt) {
+			var move = (keys.ShiftLeft || keys.ShiftRight) ? 6.0 : 3.5;
+			var speed = move * dt;
+			var yaw = camRot[1];
+			var fx = -Math.sin(yaw);
+			var fz = -Math.cos(yaw);
+			var rx = Math.cos(yaw);
+			var rz = -Math.sin(yaw);
 
-			gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-			gl.uniformMatrix4fv(uProj, false, new Float32Array(proj));
-			gl.uniformMatrix4fv(uModel, false, new Float32Array(model));
-			gl.drawElements(gl.TRIANGLES, geo.indices.length, gl.UNSIGNED_SHORT, 0);
-			requestAnimationFrame(frame);
+			if (keys.KeyW || keys.ArrowUp) {
+				camPos[0] += fx * speed;
+				camPos[2] += fz * speed;
+			}
+			if (keys.KeyS || keys.ArrowDown) {
+				camPos[0] -= fx * speed;
+				camPos[2] -= fz * speed;
+			}
+			if (keys.KeyA || keys.ArrowLeft) {
+				camPos[0] -= rx * speed;
+				camPos[2] -= rz * speed;
+			}
+			if (keys.KeyD || keys.ArrowRight) {
+				camPos[0] += rx * speed;
+				camPos[2] += rz * speed;
+			}
+			if (keys.Space) camPos[1] += speed;
+			if (keys.ControlLeft || keys.ControlRight) camPos[1] -= speed;
+			camPos[1] = clamp(camPos[1], 0.7, 8.0);
 		}
-		requestAnimationFrame(frame);
+
+		function render(nowMs) {
+			var now = nowMs * 0.001;
+			var dt = Math.min(0.05, lastTime ? (now - lastTime) : 0.016);
+			lastTime = now;
+
+			resize();
+			updateCamera(dt);
+
+			var aspect = canvas.width / canvas.height;
+			var proj = Mat4.perspective(60 * Math.PI / 180, aspect, 0.1, 220);
+			var view = createCameraMatrix(camPos, camRot);
+			var sunDir = new Float32Array([0.35, 0.9, 0.25]);
+			var camPosArr = new Float32Array(camPos);
+
+			gl.clearColor(0.035, 0.06, 0.095, 1.0);
+			gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+			gl.useProgram(cubeProgram);
+			bindMesh(gl, cube, cubeLoc);
+			gl.uniformMatrix4fv(cubeLoc.uProj, false, new Float32Array(proj));
+			gl.uniformMatrix4fv(cubeLoc.uView, false, new Float32Array(view));
+			gl.uniform3fv(cubeLoc.uCamPos, camPosArr);
+			gl.uniform3fv(cubeLoc.uSunDir, sunDir);
+			var cubeModel = Mat4.translate(Mat4.identity(), 0, 1.15, 0);
+			gl.uniformMatrix4fv(cubeLoc.uModel, false, new Float32Array(cubeModel));
+			gl.drawElements(gl.TRIANGLES, cube.count, gl.UNSIGNED_SHORT, 0);
+
+			gl.useProgram(waterProgram);
+			bindMesh(gl, plane, waterLoc);
+			gl.uniformMatrix4fv(waterLoc.uProj, false, new Float32Array(proj));
+			gl.uniformMatrix4fv(waterLoc.uView, false, new Float32Array(view));
+			gl.uniform3fv(waterLoc.uCamPos, camPosArr);
+			gl.uniform3fv(waterLoc.uSunDir, sunDir);
+			gl.uniform3fv(waterLoc.uBaseColor, new Float32Array([0.08, 0.28, 0.58]));
+			gl.uniform1f(waterLoc.uTime, now);
+			gl.uniformMatrix4fv(waterLoc.uModel, false, new Float32Array(Mat4.identity()));
+
+			gl.activeTexture(gl.TEXTURE0);
+			gl.bindTexture(gl.TEXTURE_2D, heightTex);
+			gl.uniform1i(waterLoc.uHeightTex, 0);
+			gl.activeTexture(gl.TEXTURE1);
+			gl.bindTexture(gl.TEXTURE_2D, normalTex);
+			gl.uniform1i(waterLoc.uNormalTex, 1);
+
+			gl.drawElements(gl.TRIANGLES, plane.count, gl.UNSIGNED_SHORT, 0);
+
+			rafId = requestAnimationFrame(render);
+		}
+
+		rafId = requestAnimationFrame(render);
 
 		return {
 			destroy: function () {
-				running = false;
-				canvas.removeEventListener('pointerdown', pointerDown);
-				window.removeEventListener('pointermove', pointerMove);
-				window.removeEventListener('pointerup', pointerUp);
-				if (ro) ro.disconnect(); else window.removeEventListener('resize', resize);
-				var ext = gl.getExtension('WEBGL_lose_context');
-				if (ext) ext.loseContext();
+				cancelAnimationFrame(rafId);
+				window.removeEventListener('resize', resize);
+				window.removeEventListener('keydown', onKeyDown);
+				window.removeEventListener('keyup', onKeyUp);
+				document.removeEventListener('mousemove', onMouseMove);
+				canvas.removeEventListener('click', onCanvasClick);
+				if (document.pointerLockElement === canvas && document.exitPointerLock) {
+					document.exitPointerLock();
+				}
+
+				gl.deleteTexture(heightTex);
+				gl.deleteTexture(normalTex);
+				gl.deleteBuffer(cube.vbo);
+				gl.deleteBuffer(cube.ibo);
+				gl.deleteBuffer(plane.vbo);
+				gl.deleteBuffer(plane.ibo);
+				gl.deleteProgram(cubeProgram);
+				gl.deleteProgram(waterProgram);
+
+				if (canvas.parentNode) {
+					canvas.parentNode.removeChild(canvas);
+				}
 			}
 		};
 	}
