@@ -238,9 +238,14 @@
 
 	var STORE_BADGE = {
 		play: 'assets/img/misc/Icon-Google-Play-Store.png',
-		app: 'assets/img/misc/Icon-App-Store.png'
+		app: 'assets/img/misc/Icon-App-Store.png',
+		quest: 'assets/img/misc/Icon-Quest-Store.png'
 	};
-	var STORE_LABEL = { play: 'Get it on Google Play', app: 'Download on the App Store' };
+	var STORE_LABEL = {
+		play: 'Get it on Google Play',
+		app: 'Download on the App Store',
+		quest: 'Find on Meta Quest Store'
+	};
 
 	function projectCard(p) {
 		var card = el('article', 'card reveal' + (p.featured ? ' card--featured' : ''));

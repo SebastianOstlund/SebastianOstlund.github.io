@@ -45,7 +45,7 @@ body {
 
 a { color: var(--accent); text-decoration: none; }
 img { display: block; max-width: 100%; }
-h1, h2, h3 { line-height: 1.15; margin: 0 0 0.4em; font-weight: 700; letter-spacing: -0.02em; }
+h1, h2, h3 { line-height: 1.15; margin: 0 0 0.4em; font-weight: 250; letter-spacing: -0.02em; }
 
 .grad {
 	background: linear-gradient(120deg, var(--accent), var(--accent-2) 55%, var(--accent-3));

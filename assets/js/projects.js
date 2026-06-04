@@ -36,7 +36,7 @@ window.PROJECTS = [
 	{
 		title: 'SJ Time Journey',
 		role: 'CTO, Lead Developer',
-		tags: ['Interactive Experience', 'Trains', 'History'],
+		tags: ['Experience', 'Trains', 'History', 'VR'],
 		description:
 			'I led the architecture and development of an interactive timeline experience for SJ (Swedish State Railways), guiding users ' +
 			'through the history of trains in Sweden with a clear narrative, polished visuals, and robust technical execution.',
@@ -45,7 +45,7 @@ window.PROJECTS = [
 	{
 		title: 'FujiFilm',
 		role: 'CTO, Lead Developer',
-		tags: ['Unity', 'AR'],
+		tags: ['Unity'],
 		description:
 			'I led the continued development of FujiFilm’s application by delivering new features, resolving legacy issues, ' +
 			'and improving overall stability, usability, and product quality.',
@@ -54,7 +54,7 @@ window.PROJECTS = [
 	{
 		title: 'AlixLabs',
 		role: 'CTO, Lead Developer',
-		tags: ['Guided Tour', 'Unity'],
+		tags: ['Guided Tour', 'Unity', 'VR'],
 		description:
 			'I led the creation of an immersive guided tour through the semiconductor process, visualising how ' +
 			'microchips are manufactured step by step.',
@@ -64,7 +64,7 @@ window.PROJECTS = [
 	{
 		title: 'Atlant3D',
 		role: 'CTO, Lead Developer',
-		tags: ['Guided Tour', 'Unity'],
+		tags: ['Guided Tour', 'Unity', 'VR'],
 		description:
 			'I directed an interactive guided tour of Atlant3D’s atomic-scale manufacturing, walking viewers ' +
 			'through the complete microchip printing process.',
@@ -83,7 +83,7 @@ window.PROJECTS = [
 	{
 		title: 'Volvo Stone Crusher',
 		role: 'CTO, Lead Developer',
-		tags: ['Volvo', 'Interactive'],
+		tags: ['Volvo', 'Interactive', 'VR'],
 		description:
 			'I built an interactive demonstration of Volvo’s new electric stone crusher and its eco mode, ' +
 			'controlled through a virtual iPad that drives the machine in real time.',
@@ -101,7 +101,7 @@ window.PROJECTS = [
 	{
 		title: 'Car Showroom',
 		role: 'CTO, Lead Developer',
-		tags: ['Mixed Reality', 'Automotive'],
+		tags: ['MR', 'Automotive'],
 		description:
 			'I designed a compact Mixed Reality platform for showcasing vehicles, letting customers explore ' +
 			'cars virtually at full scale.',
@@ -135,6 +135,18 @@ window.PROJECTS = [
 			'interactive and challenging gameplay designed for both newcomers and experienced VR users. ' +
 			'The experience was tested and approved by astronauts Marcos Pontes, Raja Chari, Nora Al Matrooshi, and Christer Fuglesang.',
 		media: { kind: 'youtube', id: 'TOWI0ScpDSk' }
+	},
+	{
+		title: 'Astral Guardian',
+		role: 'Lead Developer',
+		tags: ['MR', 'Unity', 'Puzzle', 'Platforming'],
+		description:
+			'Astral Guardian is a mixed reality adventure. ' +
+			'Players solve spatial puzzles by manipulating environmental objects, combining tactile interaction with mixed reality to emphasize spatial reasoning and immersive problem-solving.',
+		media: { kind: 'youtube', id: 'DA51e7DZGvU' },
+		links: [
+			{ store: 'quest', url: 'https://www.meta.com/sv-se/experiences/astral-guardian/6446836922068893/' }
+		]
 	},
 
 	{

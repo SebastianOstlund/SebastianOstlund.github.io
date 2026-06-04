@@ -524,7 +524,7 @@
 
 		var noiseSize = 256;
 		var heightMap = createValueNoise(noiseSize);
-		var normalMap = createNormalMap(heightMap, noiseSize, 7.5);
+		var normalMap = createNormalMap(heightMap, noiseSize, 27.5);
 		var heightTex = createTexture(gl, noiseSize, createHeightTextureData(heightMap, noiseSize));
 		var normalTex = createTexture(gl, noiseSize, normalMap);
 
