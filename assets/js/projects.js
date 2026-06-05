@@ -117,6 +117,26 @@ window.PROJECTS = [
 		media: { kind: 'image', src: 'assets/img/projects/PentaPort.jpg' }
 	},
 	{
+		title: 'XR Training Platform',
+		role: 'CTO, Lead Developer',
+		tags: ['Training', 'VR', 'AI', 'Platform', 'Prototype'],
+		description:
+			'Flight simulators do not replace real flying; they prepare pilots and make training more effective. ' +
+			'However, traditional simulators are often expensive. Our goal is to extend emulator-based training to more domains through a cost-efficient approach that requires only VR headsets. ' +
+			'The platform enables straightforward creation of training modules and scenario-based exercises.',
+		media: { kind: 'image', src: 'assets/img/projects/XRTrainingPlatform.jpg' }
+	},
+	{
+		title: 'Creativity XR Platform',
+		role: 'CTO, Lead Developer',
+		tags: ['XR', 'AI', 'Platform', 'Prototype'],
+		description:
+			'I led the development of an AI-assisted XR production platform designed to rapidly build, preview, and deploy immersive experiences. ' +
+			'The workflow combines AI chat assistants with prompt-to-image and image-to-3D generation pipelines, enabling faster ideation, prototyping, and content creation. ' + 
+			'Connected to meshy.ai and tripo3d.ai for easy 3D content generation.',
+		media: { kind: 'image', src: 'assets/img/projects/CreativityXRPlatform.jpg' }
+	},
+	{
 		title: 'RISC-V Emulator',
 		role: 'Solo Developer',
 		tags: ['Emulation', 'RISC-V'],
@@ -412,6 +432,18 @@ window.SLIDES = [
 		title: 'RISC-V Emulator',
 		text: 'As solo developer I built a full RISC-V microprocessor emulator, faithfully reproducing the architecture’s instruction set and execution pipeline.',
 		tags: ['Solo Developer', 'Emulation', 'RISC-V']
+	},
+	{
+		file: 'XRTrainingPlatform.jpg',
+		title: 'XR Training Platform',
+		text: 'Flight simulators do not replace real-world operations; they prepare learners and improve training efficiency. This platform brings emulator-based training to more domains through a low-cost model that requires only VR headsets, while making it easy to build training modules and scenario-based exercises.',
+		tags: ['CTO', 'Lead Developer', 'Training', 'VR', 'Emulation']
+	},
+	{
+		file: 'CreativityXRPlatform.jpg',
+		title: 'Creativity XR Platform',
+		text: 'An AI-assisted XR platform built to accelerate the full production cycle from concept to deployment. By combining AI chat assistants with prompt-to-image and image-to-3D workflows, it enables teams to create and iterate immersive experiences significantly faster.',
+		tags: ['CTO', 'Lead Developer', 'AI', 'XR', 'Platform']
 	}
 ];
 
