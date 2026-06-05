@@ -11,17 +11,17 @@
  * links: optional store badges -> { store: 'play' | 'app', url: '...' }
  */
 window.PROJECTS = [
-	{
-		title: 'Interactive WebGL Cube',
-		role: 'Demo',
-		tags: ['WebGL', 'Graphics', 'Shaders'],
-		description:
-			'A little playground baked right into this page. The preview stays idle until you click — ' +
-			'then a WebGL context spins up and renders a lit, rotating cube. Grab it with your mouse or ' +
-			'finger to spin it around; let go and it keeps its momentum.',
-		media: { kind: 'webgl', demo: 'cube' },
-		featured: true
-	},
+	//{
+	//	title: 'Interactive WebGL Cube',
+	//	role: 'Demo',
+	//	tags: ['WebGL', 'Graphics', 'Shaders'],
+	//	description:
+	//		'A little playground baked right into this page. The preview stays idle until you click — ' +
+	//		'then a WebGL context spins up and renders a lit, rotating cube. Grab it with your mouse or ' +
+	//		'finger to spin it around; let go and it keeps its momentum.',
+	//	media: { kind: 'webgl', demo: 'cube' },
+	//	featured: true
+	//},
 
 	/* --- Highlights also listed as project cards (to compare against the slideshow) --- */
 	{
