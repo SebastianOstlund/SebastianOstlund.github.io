@@ -184,7 +184,7 @@ window.PROJECTS = [
 	{
 		title: 'Magic Chess',
 		role: 'Lead Developer',
-		tags: ['AR', 'Unity', 'GDC', 'Networking'],
+		tags: ['AR', 'Unity', 'GDC', 'Network'],
 		description:
 			'Magic Chess is a networked mixed-reality chess experience with multiple themed boards and pieces, ' +
 			'showcased at GDC 2018 as an example of social AR gameplay.',
@@ -206,7 +206,7 @@ window.PROJECTS = [
 	{
 		title: 'Fleet of Steel',
 		role: 'Lead Developer',
-		tags: ['AR', 'Unity', 'Networking'],
+		tags: ['AR', 'Unity', 'Network'],
 		description:
 			'Fleet of Steel reimagines the classic Battleship formula as a shared AR tabletop game with ' +
 			'real-time multiplayer and cinematic battle presentation.',
@@ -215,7 +215,7 @@ window.PROJECTS = [
 	{
 		title: 'BikeAround',
 		role: 'Solo Developer',
-		tags: ['C++', 'OpenGL', 'Shaders', 'Networking'],
+		tags: ['C++', 'OpenGL', 'Shaders', 'Network'],
 		description:
 			'BikeAround combines Google Street View with custom bike hardware to create an interactive ' +
 			'cycling simulator that links physical pedaling to immersive 360-degree navigation.',
@@ -459,7 +459,7 @@ window.INTERESTS = [
 window.SKILLS = [
 	{
 		group: 'Programming',
-		items: ['C/C++', 'OpenGL', 'GLSL', 'Shaders', 'C#', 'Unity', 'Java', 'PHP', 'Web', 'SQL', 'Mathematica', 'Cinema 4D', '3D Modelling', 'Photoshop', 'Networking']
+		items: ['C/C++', 'OpenGL', 'GLSL', 'Shaders', 'C#', 'Unity', 'Java', 'PHP', 'Web', 'SQL', 'Mathematica', 'Cinema 4D', '3D Modelling', 'Photoshop', 'Network']
 	},
 	{
 		group: 'Other skills',
