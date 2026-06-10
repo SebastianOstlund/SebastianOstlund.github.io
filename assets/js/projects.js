@@ -146,6 +146,15 @@ window.PROJECTS = [
 		media: { kind: 'image', src: 'assets/img/projects/RISCV Emulator.jpg' }
 	},
 	{
+		title: 'PC Emulator',
+		role: 'Solo Developer',
+		tags: ['Emulation', 'C/C++', 'Unity'],
+		description:
+			'I implemented a complete virtual 500 MHz computer inside Unity, fully programmable in C/C++ ' +
+			'and emulating a working machine in real time.',
+		media: { kind: 'image', src: 'assets/img/projects/PC Emulator.jpg' }
+	},
+	{
 		title: 'Mars Quest',
 		role: 'CTO, Lead Developer',
 		tags: ['VR'],
