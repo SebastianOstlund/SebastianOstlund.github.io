@@ -1,0 +1,7 @@
+Always read and follow PROJECT.md before making changes.
+
+Before editing:
+1. Read PROJECT.md.
+2. Explain the plan.
+3. Make the smallest possible change.
+4. Run tests if available.

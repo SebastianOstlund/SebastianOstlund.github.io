@@ -81,6 +81,16 @@ window.PROJECTS = [
 		media: { kind: 'image', src: 'assets/img/projects/Wind Turbine Repair.jpg' }
 	},
 	{
+		title: 'Drone Simulator',
+		role: 'CTO, Lead Developer',
+		tags: ['Simulation', 'VR'],
+		description:
+			'I developed a drone simulator that allows users to practice flying drones in a safe and controlled ' +
+			'virtual environment. The simulator features a physics-based flight model driven by a PID controller, ' + 
+			'accurately simulating drone stabilization and flight behavior to provide realistic training and control dynamics.',
+		media: { kind: 'image', src: 'assets/img/projects/DroneSim.jpg' }
+	},
+	{
 		title: 'Volvo Stone Crusher',
 		role: 'CTO, Lead Developer',
 		tags: ['Volvo', 'Interactive', 'VR'],
@@ -113,7 +123,8 @@ window.PROJECTS = [
 		tags: ['Training', 'Simulation', 'VR', 'Volvo'],
 		description:
 			'I developed a training simulator for Volvo Penta focused on operating a terminal tractor in port logistics workflows. ' +
-			'The experience trains drivers to move containers safely and efficiently from the container yard to the ship, with emphasis on maneuvering, positioning, and procedural accuracy under realistic conditions.',
+			'The experience trains drivers to move containers safely and efficiently from the container yard to the ship, with emphasis on maneuvering, positioning, and procedural accuracy under realistic conditions. ' + 
+			'I also implemented Lane Assist and Assisted Docking systems to simulate modern driver-assistance technologies',
 		media: { kind: 'image', src: 'assets/img/projects/PentaPort.jpg' }
 	},
 	{
