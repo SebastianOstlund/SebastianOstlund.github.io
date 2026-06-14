@@ -251,6 +251,17 @@ window.PROJECTS = [
 		media: { kind: 'image', src: 'assets/img/projects/BollLang.jpg' }
 	},
 	{
+		title: 'Modular network server',
+		role: 'Solo Developer',
+		tags: ['Network', 'C#', 'Server', 'Modular'],
+		description:
+			'Built a modular server architecture focused on efficient packet processing, zero-allocation message ' +
+			'handling, and support for massive concurrent connections. The system is designed around hot-reloadable ' + 
+			'C# modules, allowing runtime compilation and replacement of logic without disconnecting clients, ' +
+			'enabling continuous operation while updating server behavior in production.',
+		media: { kind: 'image', src: 'assets/img/projects/NetworkServer.jpg' }
+	},
+	{
 		title: 'Slipstream',
 		role: 'Lead Developer',
 		tags: ['VR', 'Unity'],
