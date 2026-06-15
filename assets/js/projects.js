@@ -118,6 +118,16 @@ window.PROJECTS = [
 		media: { kind: 'image', src: 'assets/img/projects/Car Showroom.jpg' }
 	},
 	{
+		title: 'XR De-Escalation Training',
+		role: 'CTO, Lead Developer',
+		tags: ['VR', 'Training'],
+		description:
+			'An immersive XR training system designed to help users practice communication and conflict-resolution skills in realistic high-pressure scenarios. ' +
+			'Interactive simulations provide a safe environment to develop decision-making, situational awareness, and de-escalation techniques. ' + 
+			'Using Convai AI-driven virtual characters, that delivers dynamic, responsive interactions that adapt to user choices and behavior for a personalized training experience.',
+		media: { kind: 'image', src: 'assets/img/projects/DeescalationTraining.jpg' }
+	},
+	{
 		title: 'Volvo Penta Port',
 		role: 'Lead Developer',
 		tags: ['Training', 'Simulation', 'VR', 'Volvo'],
