@@ -25,6 +25,15 @@ window.PROJECTS = [
 
 	/* --- Highlights also listed as project cards (to compare against the slideshow) --- */
 	{
+		title: 'GCC Toolchain',
+		role: 'Solo Developer',
+		tags: ['Asm'],
+		description:
+			'A GCC-based toolchain that compiles C++ to assembly and executes it on a custom VM. Supports x86, ' +
+			'MIPS, and RISC-V, with zero allocations during VM execution for predictable, high-performance runtime performance.',
+		media: { kind: 'image', src: 'assets/img/projects/GCC_VM_Toolchain.jpg' }
+	},
+	{
 		title: 'Sundsvall–Timrå Airport',
 		role: 'CTO, Lead Developer',
 		tags: ['Training', 'VR'],
