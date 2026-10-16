@@ -43,6 +43,16 @@ window.PROJECTS = [
 		media: { kind: 'image', src: 'assets/img/projects/SundsvalTimraAirport.jpg' }
 	},
 	{
+		title: 'XR Training Platform',
+		role: 'CTO, Lead Developer',
+		tags: ['Training', 'VR', 'AI', 'Platform', 'Prototype'],
+		description:
+			'Flight simulators do not replace real flying; they prepare pilots and make training more effective. ' +
+			'However, traditional simulators are often expensive. Our goal is to extend emulator-based training to more domains through a cost-efficient approach that requires only VR headsets. ' +
+			'The platform enables straightforward creation of training modules and scenario-based exercises.',
+		media: { kind: 'image', src: 'assets/img/projects/XRTrainingPlatform.jpg' }
+	},
+	{
 		title: 'SJ Time Journey',
 		role: 'CTO, Lead Developer',
 		tags: ['Experience', 'Trains', 'History', 'VR'],
@@ -145,16 +155,6 @@ window.PROJECTS = [
 			'The experience trains drivers to move containers safely and efficiently from the container yard to the ship, with emphasis on maneuvering, positioning, and procedural accuracy under realistic conditions. ' + 
 			'I also implemented Lane Assist and Assisted Docking systems to simulate modern driver-assistance technologies',
 		media: { kind: 'image', src: 'assets/img/projects/PentaPort.jpg' }
-	},
-	{
-		title: 'XR Training Platform',
-		role: 'CTO, Lead Developer',
-		tags: ['Training', 'VR', 'AI', 'Platform', 'Prototype'],
-		description:
-			'Flight simulators do not replace real flying; they prepare pilots and make training more effective. ' +
-			'However, traditional simulators are often expensive. Our goal is to extend emulator-based training to more domains through a cost-efficient approach that requires only VR headsets. ' +
-			'The platform enables straightforward creation of training modules and scenario-based exercises.',
-		media: { kind: 'image', src: 'assets/img/projects/XRTrainingPlatform.jpg' }
 	},
 	{
 		title: 'Creativity XR Platform',
