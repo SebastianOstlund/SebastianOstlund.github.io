@@ -104,18 +104,19 @@ window.PROJECTS = [
 		role: 'CTO, Lead Developer',
 		tags: ['Simulation', 'VR'],
 		description:
-			'I developed a drone simulator that allows users to practice flying drones in a safe and controlled ' +
-			'virtual environment. The simulator features a physics-based flight model driven by a PID controller, ' + 
-			'accurately simulating drone stabilization and flight behavior to provide realistic training and control dynamics.',
+			'I developed a drone simulator that allows users to practice flying drones in a safe and controlled virtual environment. ' +
+			'The simulator is used for emergency-response training, mechanical fault detection, and maintenance planning in hard-to-access environments. ' +
+			'Its physics-based flight model, driven by a PID controller, simulates stabilization and control behavior so teams can diagnose issues and validate repair procedures before field operations.',
 		media: { kind: 'image', src: 'assets/img/projects/DroneSim.jpg' }
 	},
 	{
-		title: 'Volvo Stone Crusher',
+		title: 'Volvo Penta BESS: Electric Machine Platform',
 		role: 'CTO, Lead Developer',
-		tags: ['Volvo', 'Interactive', 'VR'],
+		tags: ['Volvo', 'BESS', 'HMI', 'Simulation'],
 		description:
-			'I built an interactive demonstration of Volvo’s new electric stone crusher and its eco mode, ' +
-			'controlled through a virtual iPad that drives the machine in real time.',
+			'I designed and implemented a real-time HMI-driven control platform for an electric stone crusher integrated with Volvo Penta BESS power workflows. ' +
+			'The system coordinates crusher behavior, conveyor and feeder interlocking, and eco-mode control while exposing live telemetry for operational monitoring. ' +
+			'I also created the architecture for storyboard timelines, asynchronous event handling, multiplayer synchronization, and HMI simulation to support realistic training and validation.',
 		media: { kind: 'image', src: 'assets/img/projects/Volvo Stonecrusher.jpg' }
 	},
 	{

@@ -1,0 +1,115 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 860" role="img" aria-labelledby="title desc">
+  <title id="title">Camanio Care jDome BikeAround - Modular Platform Architecture</title>
+  <desc id="desc">Two-domain architecture covering fleet MDM operations and runtime cycling experience with asynchronous data acquisition, depth-assisted rendering, and search-driven route initiation.</desc>
+  <defs>
+	<style>
+	  .bg { fill: #0d1324; }
+	  .cluster { fill: #141f36; stroke: #2f456c; stroke-width: 2; rx: 12; }
+	  .clusterTitle { fill: #ecf2ff; font: 700 24px 'Segoe UI', Arial, sans-serif; }
+	  .sub { fill: #9fb3d8; font: 600 16px 'Segoe UI', Arial, sans-serif; }
+	  .node { fill: #1c2b49; stroke: #4e79b8; stroke-width: 2; rx: 8; }
+	  .iface { fill: #183651; stroke: #3bb1d8; stroke-width: 2; rx: 8; }
+	  .text { fill: #d8e3f8; font: 600 16.5px 'Segoe UI', Arial, sans-serif; }
+	  .flow { stroke: #7eb0e0; stroke-width: 1.4; fill: none; marker-end: url(#arrow); }
+	  .sync { stroke: #46c8df; stroke-width: 1.4; fill: none; marker-end: url(#arrowCyan); }
+	  .accent { fill: #6fd0ea; font: 700 14px 'Segoe UI', Arial, sans-serif; }
+	</style>
+	<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+	  <path d="M0,0 L10,5 L0,10 z" fill="#7eb0e0" />
+	</marker>
+	<marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+	  <path d="M0,0 L10,5 L0,10 z" fill="#46c8df" />
+	</marker>
+  </defs>
+
+  <rect class="bg" width="1400" height="860" />
+  <text x="42" y="48" class="clusterTitle">jDome BikeAround - Platform Architecture</text>
+  <text x="42" y="74" class="sub">Modular control planes and deterministic media execution</text>
+
+  <rect class="cluster" x="32" y="100" width="640" height="730" />
+  <text x="52" y="132" class="clusterTitle">A) Device Management and Operations (MDM)</text>
+
+  <rect class="iface" x="60" y="170" width="260" height="72" />
+  <text x="78" y="204" class="text"><tspan x="78" dy="0">Operator Console /</tspan><tspan x="78" dy="18">Policy Interface</tspan></text>
+
+  <rect class="node" x="360" y="170" width="280" height="72" />
+  <text x="378" y="204" class="text"><tspan x="378" dy="0">Device Registry and</tspan><tspan x="378" dy="18">Compliance Profiles</tspan></text>
+
+  <rect class="node" x="60" y="276" width="260" height="72" />
+  <text x="78" y="320" class="text">Installer Orchestrator</text>
+
+  <rect class="node" x="360" y="276" width="280" height="72" />
+  <text x="372" y="310" class="text"><tspan x="372" dy="0">Update Service and</tspan><tspan x="372" dy="18">Rollback Control</tspan></text>
+
+  <rect class="node" x="60" y="382" width="260" height="72" />
+  <text x="78" y="426" class="text">Configuration Baseline Engine</text>
+
+  <rect class="node" x="360" y="382" width="280" height="72" />
+  <text x="378" y="416" class="text"><tspan x="378" dy="0">OS Policy Adapter</tspan><tspan x="378" dy="18">(Registry / Update / Network)</tspan></text>
+
+  <rect class="iface" x="60" y="488" width="260" height="72" />
+  <text x="78" y="522" class="text"><tspan x="78" dy="0">Secure Telemetry and</tspan><tspan x="78" dy="18">Health Channel</tspan></text>
+
+  <rect class="node" x="360" y="488" width="280" height="72" />
+  <text x="372" y="522" class="text"><tspan x="372" dy="0">Release Governance</tspan><tspan x="372" dy="18">and Audit Trail</tspan></text>
+
+  <rect class="node" x="60" y="594" width="580" height="72" />
+  <text x="78" y="638" class="text">Remote Execution Plane</text>
+
+  <line class="flow" x1="320" y1="206" x2="360" y2="206" />
+  <line class="flow" x1="190" y1="242" x2="190" y2="276" />
+  <line class="flow" x1="500" y1="242" x2="500" y2="276" />
+  <line class="flow" x1="190" y1="348" x2="190" y2="382" />
+  <line class="flow" x1="500" y1="348" x2="500" y2="382" />
+  <line class="flow" x1="190" y1="454" x2="190" y2="488" />
+  <line class="flow" x1="500" y1="454" x2="500" y2="488" />
+  <line class="flow" x1="190" y1="560" x2="190" y2="594" />
+  <line class="flow" x1="500" y1="560" x2="500" y2="594" />
+
+  <rect class="cluster" x="704" y="100" width="664" height="730" />
+  <text x="724" y="132" class="clusterTitle">B) Runtime Experience and Simulation Pipeline</text>
+
+  <rect class="iface" x="730" y="170" width="290" height="72" />
+  <text x="748" y="204" class="text"><tspan x="748" dy="0">Address Search and</tspan><tspan x="748" dy="18">Route Start Interface</tspan></text>
+
+  <rect class="node" x="1052" y="170" width="290" height="72" />
+  <text x="1064" y="204" class="text"><tspan x="1064" dy="0">Route Query and</tspan><tspan x="1064" dy="18">Geospatial Resolver</tspan></text>
+
+  <rect class="iface" x="730" y="276" width="290" height="72" />
+  <text x="748" y="310" class="text"><tspan x="748" dy="0">Arduino Input Gateway</tspan><tspan x="748" dy="18">(Pedal / Sensor I/O)</tspan></text>
+
+  <rect class="node" x="1052" y="276" width="290" height="72" />
+  <text x="1064" y="310" class="text"><tspan x="1064" dy="0">Session Controller</tspan><tspan x="1064" dy="18">and State Arbiter</tspan></text>
+
+  <rect class="node" x="730" y="382" width="290" height="72" />
+  <text x="742" y="426" class="text">Asynchronous Node Scanner</text>
+
+  <rect class="node" x="1052" y="382" width="290" height="72" />
+  <text x="1064" y="416" class="text"><tspan x="1064" dy="0">Image and Depth</tspan><tspan x="1064" dy="18">Data Acquisition</tspan></text>
+
+  <rect class="node" x="730" y="488" width="290" height="72" />
+  <text x="748" y="522" class="text"><tspan x="748" dy="0">Image / Node Cache and</tspan><tspan x="748" dy="18">Prefetch Layer</tspan></text>
+
+  <rect class="node" x="1052" y="488" width="290" height="72" />
+  <text x="1070" y="522" class="text"><tspan x="1070" dy="0">Interpolation Engine</tspan><tspan x="1070" dy="18">(Depth-Aware Blending)</tspan></text>
+
+  <rect class="node" x="730" y="594" width="612" height="72" />
+  <text x="742" y="638" class="text">Rendering Runtime</text>
+
+  <line class="sync" x1="1020" y1="206" x2="1052" y2="206" />
+  <line class="sync" x1="875" y1="242" x2="875" y2="276" />
+  <line class="sync" x1="1197" y1="242" x2="1197" y2="276" />
+  <line class="sync" x1="875" y1="348" x2="875" y2="382" />
+  <line class="sync" x1="1197" y1="348" x2="1197" y2="382" />
+  <line class="sync" x1="875" y1="454" x2="875" y2="488" />
+  <line class="sync" x1="1197" y1="454" x2="1197" y2="488" />
+  <line class="sync" x1="875" y1="560" x2="875" y2="594" />
+  <line class="sync" x1="1197" y1="560" x2="1197" y2="594" />
+
+  <line class="flow" x1="640" y1="630" x2="700" y2="630" />
+  <text x="748" y="617" class="accent">Governed rollout and runtime policy propagation</text>
+</svg>
+
+
+
+

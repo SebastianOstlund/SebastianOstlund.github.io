@@ -1,0 +1,108 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 860" role="img" aria-labelledby="title desc">
+  <title id="title">FujiFilm Interactive Exhibition Platform - Modular Runtime Architecture</title>
+  <desc id="desc">Dual-surface interactive architecture with legacy integration, multi-input mediation, synchronized visual channels, and operational telemetry.</desc>
+  <defs>
+	<style>
+	  .bg { fill: #0c1323; }
+	  .cluster { fill: #142038; stroke: #2f466f; stroke-width: 2; rx: 12; }
+	  .title { fill: #ecf3ff; font: 700 24px 'Segoe UI', Arial, sans-serif; }
+	  .sub { fill: #a7bbdf; font: 600 16px 'Segoe UI', Arial, sans-serif; }
+	  .node { fill: #1c2d4d; stroke: #4a77bb; stroke-width: 2; rx: 8; }
+	  .iface { fill: #173a56; stroke: #39b8de; stroke-width: 2; rx: 8; }
+	  .text { fill: #d9e5fa; font: 600 16.5px 'Segoe UI', Arial, sans-serif; }
+	  .flow { stroke: #7fb2e2; stroke-width: 1.4; fill: none; marker-end: url(#arrow); }
+	  .sync { stroke: #46cae1; stroke-width: 1.4; fill: none; marker-end: url(#arrowCyan); }
+	  .accent { fill: #74d5ec; font: 700 14px 'Segoe UI', Arial, sans-serif; }
+	</style>
+	<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+	  <path d="M0,0 L10,5 L0,10 z" fill="#7fb2e2" />
+	</marker>
+	<marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+	  <path d="M0,0 L10,5 L0,10 z" fill="#46cae1" />
+	</marker>
+  </defs>
+
+  <rect class="bg" width="1400" height="860" />
+  <text x="42" y="48" class="title">FujiFilm Exhibition Runtime Architecture</text>
+  <text x="42" y="74" class="sub">Multi-input orchestration and dual-surface synchronization</text>
+
+  <rect class="cluster" x="32" y="100" width="430" height="730" />
+  <text x="52" y="132" class="title">Input and Legacy Integration</text>
+
+  <rect class="iface" x="60" y="170" width="374" height="70" />
+  <text x="82" y="212" class="text">Touch Input Interface</text>
+
+  <rect class="iface" x="60" y="264" width="374" height="70" />
+  <text x="82" y="306" class="text">Object Tracking Input Interface</text>
+
+  <rect class="node" x="60" y="358" width="374" height="70" />
+  <text x="78" y="390" class="text"><tspan x="78" dy="0">Input Normalization</tspan><tspan x="78" dy="18">and Gesture Mapping</tspan></text>
+
+  <rect class="node" x="60" y="452" width="374" height="70" />
+  <text x="82" y="494" class="text">Legacy Adapter Layer</text>
+
+  <rect class="node" x="60" y="546" width="374" height="70" />
+  <text x="82" y="588" class="text">Session Orchestration Controller</text>
+
+  <rect class="node" x="60" y="640" width="374" height="70" />
+  <text x="78" y="672" class="text"><tspan x="78" dy="0">Interaction State Store</tspan><tspan x="78" dy="18">and Audit Context</tspan></text>
+
+  <line class="flow" x1="247" y1="240" x2="247" y2="264" />
+  <line class="flow" x1="247" y1="334" x2="247" y2="358" />
+  <line class="flow" x1="247" y1="428" x2="247" y2="452" />
+  <line class="flow" x1="247" y1="522" x2="247" y2="546" />
+  <line class="flow" x1="247" y1="616" x2="247" y2="640" />
+
+  <rect class="cluster" x="490" y="100" width="878" height="730" />
+  <text x="510" y="132" class="title">Presentation and Synchronization Runtime</text>
+
+  <rect class="node" x="520" y="170" width="390" height="70" />
+  <text x="534" y="202" class="text"><tspan x="534" dy="0">Content Model and</tspan><tspan x="534" dy="18">Slide/Scene Repository</tspan></text>
+
+  <rect class="node" x="958" y="170" width="380" height="70" />
+  <text x="972" y="202" class="text"><tspan x="972" dy="0">Asset Delivery</tspan><tspan x="972" dy="18">Pipeline and Cache</tspan></text>
+
+  <rect class="node" x="520" y="264" width="390" height="70" />
+  <text x="542" y="306" class="text">3D Visualization Engine</text>
+
+  <rect class="node" x="958" y="264" width="380" height="70" />
+  <text x="980" y="306" class="text">Presentation Canvas Engine</text>
+
+  <rect class="iface" x="520" y="358" width="390" height="70" />
+  <text x="542" y="400" class="text">Dual-Screen Sync Bus</text>
+
+  <rect class="iface" x="958" y="358" width="380" height="70" />
+  <text x="980" y="400" class="text">Cross-Surface Event Router</text>
+
+  <rect class="node" x="520" y="452" width="390" height="70" />
+  <text x="534" y="484" class="text"><tspan x="534" dy="0">Frame Coordination and</tspan><tspan x="534" dy="18">Transition Scheduler</tspan></text>
+
+  <rect class="node" x="958" y="452" width="380" height="70" />
+  <text x="972" y="484" class="text"><tspan x="972" dy="0">Diagnostics and</tspan><tspan x="972" dy="18">Runtime Telemetry</tspan></text>
+
+  <rect class="node" x="520" y="546" width="818" height="70" />
+  <text x="542" y="588" class="text">Exhibition Delivery Runtime</text>
+
+  <line class="sync" x1="910" y1="205" x2="958" y2="205" />
+  <line class="sync" x1="910" y1="299" x2="958" y2="299" />
+  <line class="sync" x1="910" y1="393" x2="958" y2="393" />
+  <line class="sync" x1="910" y1="487" x2="958" y2="487" />
+  <line class="sync" x1="715" y1="240" x2="715" y2="264" />
+  <line class="sync" x1="1148" y1="240" x2="1148" y2="264" />
+  <line class="sync" x1="715" y1="334" x2="715" y2="358" />
+  <line class="sync" x1="1148" y1="334" x2="1148" y2="358" />
+  <line class="sync" x1="715" y1="428" x2="715" y2="452" />
+  <line class="sync" x1="1148" y1="428" x2="1148" y2="452" />
+  <line class="sync" x1="715" y1="522" x2="715" y2="546" />
+  <line class="sync" x1="1148" y1="522" x2="1148" y2="546" />
+
+  <line class="flow" x1="434" y1="581" x2="520" y2="581" />
+  <text x="542" y="566" class="accent">Normalized interaction events to runtime</text>
+</svg>
+
+
+
+
+
+
+

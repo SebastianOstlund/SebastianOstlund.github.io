@@ -1,0 +1,68 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 860" role="img" aria-labelledby="title desc">
+  <title id="title">Volvo Penta BESS Electric Machine Platform - Control Architecture</title>
+  <desc id="desc">
+    Modular control architecture for HMI-driven crusher operations, interlocked conveyors, energy management, and resilient runtime governance.
+  </desc>
+  <defs>
+    <style>
+      .bg{fill:#0d1324}.cluster{fill:#141f36;stroke:#2f456c;stroke-width:2;rx:12}.title{fill:#edf3ff;font:700 24px &apos;Segoe UI&apos;,Arial}.sub{fill:#a6bbde;font:600 16px &apos;Segoe UI&apos;,Arial}.node{fill:#1d2c4a;stroke:#4f7bbc;stroke-width:2;rx:8}.iface{fill:#183652;stroke:#3ab4da;stroke-width:2;rx:8}.text{fill:#dae6fb;font: 600 16.5px &apos;Segoe UI&apos;,Arial}.flow{stroke:#7fb2e2;stroke-width: 2;fill:none;marker-end:url(#a)}.sync{stroke:#47c9e0;stroke-width: 2;fill:none;marker-end:url(#b)}
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7fb2e2"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#47c9e0"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1400" height="860"/>
+  <text x="40" y="48" class="title">Volvo Penta BESS - Control and Energy Architecture</text>
+  <text x="40" y="74" class="sub">HMI governance and microgrid-aware execution</text>
+  <rect class="cluster" x="32" y="100" width="520" height="730"/>
+  <text x="52" y="132" class="title">Operations and Interface Layer</text>
+  <rect class="iface" x="60" y="170" width="460" height="70"/>
+  <text x="78" y="204" class="text"><tspan x="78" dy="0">Rugged HMI and</tspan><tspan x="78" dy="18">Operator Control Surfaces</tspan></text>
+  <rect class="node" x="60" y="262" width="460" height="70"/>
+  <text x="78" y="294" class="text"><tspan x="78" dy="0">Command Validation and</tspan><tspan x="78" dy="18">Safety Envelope</tspan></text>
+  <rect class="node" x="60" y="354" width="460" height="70"/>
+  <text x="78" y="386" class="text"><tspan x="78" dy="0">Crusher and Eco-Mode</tspan><tspan x="78" dy="18">Control Service</tspan></text>
+  <rect class="node" x="60" y="446" width="460" height="70"/>
+  <text x="78" y="478" class="text"><tspan x="78" dy="0">Conveyor and Feeder</tspan><tspan x="78" dy="18">Interlocking Controller</tspan></text>
+  <rect class="node" x="60" y="538" width="460" height="70"/>
+  <text x="78" y="570" class="text"><tspan x="78" dy="0">Asynchronous Event and</tspan><tspan x="78" dy="18">Timeline Runtime</tspan></text>
+  <rect class="node" x="60" y="630" width="460" height="70"/>
+  <text x="78" y="662" class="text"><tspan x="78" dy="0">Multiplayer Session and</tspan><tspan x="78" dy="18">Scenario Synchronizer</tspan></text>
+  <line class="flow" x1="290" y1="240" x2="290" y2="262"/>
+  <line class="flow" x1="290" y1="332" x2="290" y2="354"/>
+  <line class="flow" x1="290" y1="424" x2="290" y2="446"/>
+  <line class="flow" x1="290" y1="516" x2="290" y2="538"/>
+  <line class="flow" x1="290" y1="608" x2="290" y2="630"/>
+  <rect class="cluster" x="584" y="100" width="784" height="730"/>
+  <text x="604" y="132" class="title">Energy, Automation, and Assurance Layer</text>
+  <rect class="node" x="612" y="170" width="350" height="70"/>
+  <text x="628" y="202" class="text"><tspan x="628" dy="0">PLC and Automation</tspan><tspan x="628" dy="18">Integration Bus</tspan></text>
+  <rect class="node" x="996" y="170" width="340" height="70"/>
+  <text x="1018" y="212" class="text">BESS Power and SOC Monitoring</text>
+  <rect class="node" x="612" y="262" width="350" height="70"/>
+  <text x="628" y="294" class="text"><tspan x="628" dy="0">Peak-Shaving and</tspan><tspan x="628" dy="18">Power Smoothing Logic</tspan></text>
+  <rect class="node" x="996" y="262" width="340" height="70"/>
+  <text x="1018" y="304" class="text">Thermal and Voltage Guardrails</text>
+  <rect class="iface" x="612" y="354" width="724" height="70"/>
+  <text x="628" y="386" class="text"><tspan x="628" dy="0">Telemetry Fabric and</tspan><tspan x="628" dy="18">Analytics Interface</tspan></text>
+  <rect class="node" x="612" y="446" width="350" height="70"/>
+  <text x="628" y="478" class="text"><tspan x="628" dy="0">Simulation Fidelity and</tspan><tspan x="628" dy="18">HMI Emulation</tspan></text>
+  <rect class="node" x="996" y="446" width="340" height="70"/>
+  <text x="1010" y="478" class="text"><tspan x="1010" dy="0">Audit Logging and</tspan><tspan x="1010" dy="18">Incident Replay</tspan></text>
+  <rect class="node" x="612" y="538" width="724" height="70"/>
+  <text x="628" y="570" class="text"><tspan x="628" dy="0">Release Governance and</tspan><tspan x="628" dy="18">Policy Enforcement</tspan></text>
+  <line class="sync" x1="962" y1="205" x2="996" y2="205"/>
+  <line class="sync" x1="962" y1="297" x2="996" y2="297"/>
+  <line class="sync" x1="790" y1="240" x2="790" y2="262"/>
+  <line class="sync" x1="1166" y1="240" x2="1166" y2="262"/>
+  <line class="sync" x1="790" y1="332" x2="790" y2="354"/>
+  <line class="sync" x1="1166" y1="332" x2="1166" y2="354"/>
+  <line class="sync" x1="790" y1="424" x2="790" y2="446"/>
+  <line class="sync" x1="1166" y1="424" x2="1166" y2="446"/>
+  <line class="sync" x1="790" y1="516" x2="790" y2="538"/>
+  <line class="sync" x1="1166" y1="516" x2="1166" y2="538"/>
+  <line class="flow" x1="520" y1="390" x2="612" y2="390"/>
+</svg>

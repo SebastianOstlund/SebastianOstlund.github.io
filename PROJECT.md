@@ -4,7 +4,8 @@ A simple static portfolio website.
 
 ## Important Files
 
-- `index.html` – Main page layout and UI.
+- `index.html` – Main developer homepage layout and UI.
+- `showcases.html` – Interactive project showcase page.
 - `style.css` – Site styling.
 - `projects.js` – Portfolio data source.
 

@@ -1,0 +1,47 @@
+volvo penta bess, im looking for information about a tablet to control electrical machines, like stone crushers
+
+When setting up or operating mobile industrial machinery like stone crushers using temporary or hybrid power—such as a Volvo Penta BESS (Battery Energy Storage System)—control is typically handled through a combination of industrial automation hardware, programmable logic controllers (PLCs), and rugged human-machine interface (HMI) screens or tablets.
+
+How Heavy-Duty Industrial and Crusher Control Systems Work
+Mobile crushers, screens, and localized microgrids running on high-capacity battery units usually rely on specialized industrial control ecosystems rather than consumer tablets:
+
+Industrial Tablets / HMIs: Ruggedized touch panels (often running IP65/IP67-rated industrial software or web-based dashboards) allow operators to monitor power loads, adjust crushing sequences, and check battery states of charge safely from a distance or from a plant control room.
+
+Cloud & Local EMS (Energy Management Systems): Volvo Penta’s BESS architecture integrates with monitoring solutions that track voltage, thermal regulation, and power distribution. Operators interact with these systems through secure local touchscreens or connected remote telemetry platforms.
+
+Plant Interlocking: For stone crushers, the control system coordinates conveyor belts, vibrating feeders, and the crusher motor itself to manage material flow and prevent overloads. When paired with a BESS, the control interface also handles peak shaving and power smoothing so that sudden high torque demands from the crusher don't destabilize the microgrid.
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+You actually can call C:\msys64\ucrt64\bin\cobc.exe directly from C# Process.Start without launching the MSYS2 terminal—you just need to pass COB_CONFIG_DIR and COB_COPY_DIR (and prepend C:\msys64\ucrt64\bin to PATH so it finds gcc/clang and DLLs) in ProcessStartInfo.Environment.
+
+Option 1: Run cobc.exe Directly from C# (Fastest & Cleanest)
+
+Because ucrt64\bin\cobc.exe is a native Windows executable, it doesn't require the MSYS2 bash shell at all once those environment variables are set on the child process:
+csharp
+using System;
+using System.Diagnostics;
+
+var psi = new ProcessStartInfo
+{
+    FileName = @"C:\msys64\ucrt64\bin\cobc.exe",
+    Arguments = "-C -x hello.cob -o hello.c", // Or "-x hello.cob -o hello.exe"
+    WorkingDirectory = @"C:\path\to\your\cobol\project",
+    RedirectStandardOutput = true,
+    RedirectStandardError = true,
+    UseShellExecute = false,
+    CreateNoWindow = true
+};
+
+// Set required GnuCOBOL paths and add ucrt64\bin to PATH so cobc finds its DLLs & C compiler
+psi.Environment["COB_CONFIG_DIR"] = @"C:\msys64\ucrt64\share\gnucobol\config";
+psi.Environment["COB_COPY_DIR"] = @"C:\msys64\ucrt64\share\gnucobol\copy";
+psi.Environment["PATH"] = @"C:\msys64\ucrt64\bin;" + Environment.GetEnvironmentVariable("PATH");
+
+using var process = Process.Start(psi)!;
+string stdout = process.StandardOutput.ReadToEnd();
+string stderr = process.StandardError.ReadToEnd();
+process.WaitForExit();
+
+Console.WriteLine($"Exit Code: {process.ExitCode}");
+if (!string.IsNullOrEmpty(stderr)) Console.WriteLine($"Errors:\n{stderr}");
